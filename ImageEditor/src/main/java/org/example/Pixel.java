@@ -41,7 +41,7 @@ public class Pixel {
         Depth = depth;
     }
 
-    public String getPixelContent() {
+    public String getPixelContent(Pixel pixel) {
         return PixelContent;
     }
 
@@ -57,5 +57,39 @@ public class Pixel {
                 ", Depth=" + Depth +
                 ", PixelContent='" + PixelContent + '\'' +
                 '}';
+
+    }
+
+    //method to check if PixelContent is "1" or "0"
+    public boolean isPixBIT(){
+        if (getPixelContent(this) == "1" || getPixelContent(this) == "0") {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isPixRGB(){
+        //convert PixelContent to list
+        String[] rgb = getPixelContent(this).split(",");
+        //check if list is long 3 and each element is between 0 and 255
+        if (rgb.length == 3 &&
+            Integer.parseInt(rgb[0]) >= 0 &&
+            Integer.parseInt(rgb[0]) <= 255 &&
+            Integer.parseInt(rgb[1]) >= 0 &&
+            Integer.parseInt(rgb[1]) <= 255 &&
+            Integer.parseInt(rgb[2]) >= 0 &&
+            Integer.parseInt(rgb[2]) <= 255) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isPixHEX(){
+        String hex = getPixelContent(this);
+        //check if string is a valid hex color
+        if (hex.matches("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$")) {
+            return true;
+        }
+        return false;
     }
 }
