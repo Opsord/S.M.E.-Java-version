@@ -42,12 +42,25 @@ public class Image {
         this.PixelList = pixelList;
     }
 
-    //implement abstract method
+    //Verification BIT type
+    //@Override
+    public boolean isBitMap (){
+        PixelList.forEach(Pixel::isPixBIT);
+        return true;
+    }
 
+    //Verification RGB type
+    public boolean isPixMap (){
+        PixelList.forEach(Pixel::isPixRGB);
+        return true;
+    }
 
+    //Verification HEX type
+    public boolean isHexMap (){
+        PixelList.forEach(Pixel::isPixHEX);
+        return true;
+    }
 
-
-    
     @Override
     public String toString() {
         return "Image{" +

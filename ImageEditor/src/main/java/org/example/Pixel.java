@@ -57,7 +57,7 @@ public class Pixel {
         return false;
     }
 
-    //Verification RTB type
+    //Verification RGB type
     public boolean isPixRGB(){
         //convert PixelContent to list
         String[] rgb = getPixelContent().split(",");

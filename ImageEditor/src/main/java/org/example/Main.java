@@ -1,40 +1,43 @@
 package org.example;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
-        Pixel pixelBIT01 = new Pixel(0, 0, 10, "1");
-        Pixel pixelBIT02 = new Pixel(0, 1, 10, "0");
-        Pixel pixelBIT03 = new Pixel(1, 0, 10, "1");
-        Pixel pixelBIT04 = new Pixel(1, 1, 10, "0");
+        //Definition of BIT image
+        Pixel pixBIT01 = new Pixel(0, 0, 10, "1");
+        Pixel pixBIT02 = new Pixel(0, 1, 10, "0");
+        Pixel pixBIT03 = new Pixel(1, 0, 10, "1");
+        Pixel pixBIT04 = new Pixel(1, 1, 10, "0");
+        List<Pixel> bitMap01 = Arrays.asList(pixBIT01, pixBIT02, pixBIT03, pixBIT04);
+        Image imgBIT01 = new Image(2, 2, bitMap01);
+        System.out.println(imgBIT01.isBitMap());
 
-        Pixel pixelRGB01 = new Pixel(0, 0, 10, "255,0,0");
-        Pixel pixelRGB02 = new Pixel(0, 1, 10, "0,255,0");
-        Pixel pixelRGB03 = new Pixel(1, 0, 10, "0,0,255");
-        Pixel pixelRGB04 = new Pixel(1, 1, 10, "255,255,255");
+        //Definition of RGB image
+        Pixel pixRGB01 = new Pixel(0, 0, 10, "255");
+        Pixel pixRGB02 = new Pixel(0, 1, 10, "255");
+        Pixel pixRGB03 = new Pixel(1, 0, 10, "255");
+        Pixel pixRGB04 = new Pixel(1, 1, 10, "255");
+        List<Pixel> pixMap01 = Arrays.asList(pixRGB01, pixRGB02, pixRGB03, pixRGB04);
+        Image imgRTB01 = new Image(2, 2, pixMap01);
+        System.out.println(imgRTB01.isPixMap());
 
-        Pixel pixelHEX01 = new Pixel(0, 0, 10, "#8E44AD");
-        Pixel pixelHEX02 = new Pixel(0, 1, 10, "#F1C40F");
-        Pixel pixelHEX03 = new Pixel(1, 0, 10, "#E67E22");
-        Pixel pixelHEX04 = new Pixel(1, 1, 10, "#2ECC71");
+        //Definition of HEX image
+        Pixel pixHEX01 = new Pixel(0, 0, 10, "FFFFFF");
+        Pixel pixHEX02 = new Pixel(0, 1, 10, "FFFFFF");
+        Pixel pixHEX03 = new Pixel(1, 0, 10, "FFFFFF");
+        Pixel pixHEX04 = new Pixel(1, 1, 10, "FFFFFF");
+        List<Pixel> hexMap01 = Arrays.asList(pixHEX01, pixHEX02, pixHEX03, pixHEX04);
+        Image imgHEX01 = new Image(2, 2, hexMap01);
+        System.out.println(imgHEX01.isHexMap());
 
-        //print all pixels
-        System.out.println(pixelBIT01);
-        System.out.println(pixelBIT02);
-        System.out.println(pixelBIT03);
-        System.out.println(pixelBIT04);
-        System.out.println(pixelRGB01);
-        System.out.println(pixelRGB02);
-        System.out.println(pixelRGB03);
-        System.out.println(pixelRGB04);
-        System.out.println(pixelHEX01);
-        System.out.println(pixelHEX02);
-        System.out.println(pixelHEX03);
-        System.out.println(pixelHEX04);
-        
-        //pixel type check
-        System.out.println(pixelBIT01.isPixBIT());
-        System.out.println(pixelRGB04.isPixRGB());
-        System.out.println(pixelHEX02.isPixHEX());
+        //print imgBIT01
+        System.out.println(imgBIT01);
+        //print imgRTB01
+        System.out.println(imgRTB01);
+        //print imgHEX01
+        System.out.println(imgHEX01);
     }
 }
