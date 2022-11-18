@@ -18,31 +18,31 @@ public class Image {
     }
 
     //getters and setters
-    public int getLargo(Image image) {
-        return Largo;
+    public int getLargo() {
+        return this.Largo;
     }
 
     public void setLargo(int largo) {
-        Largo = largo;
+        this.Largo = largo;
     }
 
-    public int getAlto(Image image) {
-        return Alto;
+    public int getAlto() {
+        return this.Alto;
     }
 
     public void setAlto(int alto) {
-        Alto = alto;
+        this.Alto = alto;
     }
 
-    public List<Pixel> getPixelList(Image image) {
-        return PixelList;
+    public List<Pixel> getPixelList() {
+        return this.PixelList;
     }
 
     public void setPixelList(List<Pixel> pixelList) {
-        PixelList = pixelList;
+        this.PixelList = pixelList;
     }
 
-
+    //implement abstract method
 
 
 

@@ -17,48 +17,50 @@ public class Pixel {
         PixelContent = pixelContent;
     }
 
-    public int getPosX(Pixel pixel) {
-        return PosX;
+    public int getPosX() {
+        return this.PosX;
     }
 
     public void setPosX(int posX) {
-        PosX = posX;
+        this.PosX = posX;
     }
 
-    public int getPosY(Pixel pixel) {
-        return PosY;
+    public int getPosY() {
+        return this.PosY;
     }
 
     public void setPosY(int posY) {
-        PosY = posY;
+        this.PosY = posY;
     }
 
-    public int getDepth(Pixel pixel) {
-        return Depth;
+    public int getDepth() {
+        return this.Depth;
     }
 
     public void setDepth(int depth) {
-        Depth = depth;
+        this.Depth = depth;
     }
 
-    public String getPixelContent(Pixel pixel) {
-        return PixelContent;
+    public String getPixelContent() {
+        return this.PixelContent;
     }
 
     public void setPixelContent(String pixelContent) {
-        PixelContent = pixelContent;
+        this.PixelContent = pixelContent;
     }
 
+    //Verification BIT type
     public boolean isPixBIT(){
-        if (getPixelContent(this) == "1" || getPixelContent(this) == "0") {
+        if (getPixelContent() == "1" || getPixelContent() == "0") {
             return true;
         }
         return false;
     }
 
+    //Verification RTB type
     public boolean isPixRGB(){
         //convert PixelContent to list
-        String[] rgb = getPixelContent(this).split(",");
+        String[] rgb = getPixelContent().split(",");
         //check if list is long 3 and each element is between 0 and 255
         if (rgb.length == 3 &&
                 Integer.parseInt(rgb[0]) >= 0 &&
@@ -72,14 +74,17 @@ public class Pixel {
         return false;
     }
 
+    //Verification Hexadecimal type
     public boolean isPixHEX() {
-        String hex = getPixelContent(this);
+        String hex = getPixelContent();
         //check if string is a valid hex color
         if (hex.matches("^#([A-Fa-f0-9]{6})$")) {
             return true;
         }
         return false;
     }
+
+    //Transform pixel to string
     @Override
     public String toString() {
         return "Pixel{" +
