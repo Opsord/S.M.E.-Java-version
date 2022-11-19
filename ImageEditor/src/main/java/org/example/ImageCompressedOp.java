@@ -1,2 +1,6 @@
-package org.example;public interface ImageCompressedOP {
+package org.example;
+
+public interface ImageCompressedOp {
+
+   //public void decompress();
 }

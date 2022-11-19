@@ -2,13 +2,7 @@ package org.example;
 
 import java.util.List;
 
-public class Image implements ImageOperations {
-
-    private int Largo;
-
-    private int Alto;
-
-    private List<Pixel> PixelList;
+public class Image extends ImageFormat implements ImageOperations {
 
     //constructor
     public Image(int largo, int alto, List<Pixel> pixelList) {

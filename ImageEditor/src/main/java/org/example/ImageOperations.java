@@ -8,4 +8,6 @@ public interface ImageOperations {
 
     public abstract boolean isHexMap();
 
+    public abstract boolean isCompressed();
+
 }
