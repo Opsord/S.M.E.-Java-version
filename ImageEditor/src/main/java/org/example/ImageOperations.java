@@ -2,10 +2,10 @@ package org.example;
 
 public interface ImageOperations {
 
-    public boolean isBitMap();
+    public  abstract boolean isBitMap();
 
-    public boolean isPixMap();
+    public abstract boolean isPixMap();
 
-    public boolean isHexMap();
+    public abstract boolean isHexMap();
 
 }

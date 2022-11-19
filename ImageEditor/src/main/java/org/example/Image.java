@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.List;
 
-public class Image {
+public class Image implements ImageOperations {
 
     private int Largo;
 
@@ -43,19 +43,21 @@ public class Image {
     }
 
     //Verification BIT type
-    //@Override
+    @Override
     public boolean isBitMap (){
         PixelList.forEach(Pixel::isPixBIT);
         return true;
     }
 
     //Verification RGB type
+    @Override
     public boolean isPixMap (){
         PixelList.forEach(Pixel::isPixRGB);
         return true;
     }
 
     //Verification HEX type
+    @Override
     public boolean isHexMap (){
         PixelList.forEach(Pixel::isPixHEX);
         return true;
