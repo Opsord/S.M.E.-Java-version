@@ -2,16 +2,20 @@ package org.example;
 
 public interface ImageOperations {
 
-    public  abstract boolean isBitMap();
+    public boolean isBitMap();
 
-    public abstract boolean isPixMap();
+    public boolean isPixMap();
 
-    public abstract boolean isHexMap();
+    public boolean isHexMap();
 
-    public abstract boolean isCompressed();
+    public boolean isCompressed();
 
-    public abstract void flipH();
+    public void flipH();
 
-    public abstract void flipV();
+    public void flipV();
+
+    public void crop(int x1, int y1, int x2, int y2);
+
+    public void imgRGBToHex();
 
 }

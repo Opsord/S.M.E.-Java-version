@@ -9,17 +9,19 @@ public class Main {
         //Definition of BIT image
         Pixel pixBIT01 = new Pixel(0, 0, 10, "1");
         Pixel pixBIT02 = new Pixel(0, 1, 10, "0");
-        Pixel pixBIT03 = new Pixel(1, 0, 10, "1");
-        Pixel pixBIT04 = new Pixel(1, 1, 10, "0");
-        List<Pixel> bitMap01 = Arrays.asList(pixBIT01, pixBIT02, pixBIT03, pixBIT04);
-        Image imgBIT01 = new Image(2, 2, bitMap01);
+        Pixel pixBIT03 = new Pixel(0, 2, 10, "1");
+        Pixel pixBIT04 = new Pixel(1, 0, 10, "1");
+        Pixel pixBIT05 = new Pixel(1, 1, 10, "0");
+        Pixel pixBIT06 = new Pixel(1, 2, 10, "0");
+        List<Pixel> bitMap01 = Arrays.asList(pixBIT01, pixBIT02, pixBIT03, pixBIT04, pixBIT05, pixBIT06);
+        Image imgBIT01 = new Image(3, 2, bitMap01);
         //System.out.println(imgBIT01.isBitMap());
 
         //Definition of RGB image
-        Pixel pixRGB01 = new Pixel(0, 0, 10, "255");
-        Pixel pixRGB02 = new Pixel(0, 1, 10, "255");
-        Pixel pixRGB03 = new Pixel(1, 0, 10, "255");
-        Pixel pixRGB04 = new Pixel(1, 1, 10, "255");
+        Pixel pixRGB01 = new Pixel(0, 0, 10, "255,100,10");
+        Pixel pixRGB02 = new Pixel(0, 1, 10, "255,150,20");
+        Pixel pixRGB03 = new Pixel(1, 0, 10, "255,200,30");
+        Pixel pixRGB04 = new Pixel(1, 1, 10, "255,250,40");
         List<Pixel> pixMap01 = Arrays.asList(pixRGB01, pixRGB02, pixRGB03, pixRGB04);
         Image imgRGB01 = new Image(2, 2, pixMap01);
         //System.out.println(imgRTB01.isPixMap());
@@ -43,6 +45,7 @@ public class Main {
         */
 
         /*
+        //isCompressed examples
         //check if imgBIT01 is compressed
         System.out.println(imgBIT01.isCompressed());
         //check if imgRTB01 is compressed
@@ -52,7 +55,7 @@ public class Main {
         */
 
         /*
-        //Horizontal flips
+        //Horizontal flips examples
         //imgBIT01
         System.out.println(imgBIT01);
         imgBIT01.flipH();
@@ -68,7 +71,7 @@ public class Main {
         */
 
         /*
-        //Vertical flips
+        //Vertical flips examples
         //imgBIT01
         System.out.println(imgBIT01);
         imgBIT01.flipV();
@@ -82,5 +85,24 @@ public class Main {
         imgHEX01.flipV();
         System.out.println(imgHEX01);
         */
+
+        /*
+        //crop examples
+        //imgBIT01
+        System.out.println(imgBIT01);
+        imgBIT01.crop(0,0, 1, 1);
+        System.out.println(imgBIT01);
+        //imgRTB01
+        System.out.println(imgRGB01);
+        imgRGB01.crop(0,0, 0, 0);
+        System.out.println(imgRGB01);
+        //imgHEX01
+        System.out.println(imgHEX01);
+        imgHEX01.crop(1,1, 1, 1);
+        System.out.println(imgHEX01);
+        */
+
+        imgRGB01.imgRGBToHex();
+        System.out.println(imgRGB01);
     }
 }

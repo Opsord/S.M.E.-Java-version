@@ -89,10 +89,19 @@ public class Pixel {
         setPosX(arg - getPosX());
     }
 
-
     //Flip pixel vertically
     public void flipV(int arg) {
         setPosY(arg - getPosY());
+    }
+    
+    //Convert RGB to Hexadecimal
+    public void pixRGBToHex() {
+        String[] rgb = getPixelContent().split(",");
+        int r = Integer.parseInt(rgb[0]);
+        int g = Integer.parseInt(rgb[1]);
+        int b = Integer.parseInt(rgb[2]);
+        String hex = String.format("#%02x%02x%02x", r, g, b);
+        setPixelContent(hex);
     }
 
     //Transform pixel to string
