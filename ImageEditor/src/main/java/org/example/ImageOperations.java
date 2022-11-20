@@ -10,4 +10,8 @@ public interface ImageOperations {
 
     public abstract boolean isCompressed();
 
+    public abstract void flipH();
+
+    public abstract void flipV();
+
 }

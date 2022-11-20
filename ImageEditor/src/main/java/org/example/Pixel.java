@@ -50,7 +50,7 @@ public class Pixel {
     }
 
     //Verification BIT type
-    public boolean isPixBIT(){
+    public boolean isPixBIT() {
         if (getPixelContent() == "1" || getPixelContent() == "0") {
             return true;
         }
@@ -58,7 +58,7 @@ public class Pixel {
     }
 
     //Verification RGB type
-    public boolean isPixRGB(){
+    public boolean isPixRGB() {
         //convert PixelContent to list
         String[] rgb = getPixelContent().split(",");
         //check if list is long 3 and each element is between 0 and 255
@@ -82,6 +82,17 @@ public class Pixel {
             return true;
         }
         return false;
+    }
+
+    //Flip pixel horizontally
+    public void flipH(int arg) {
+        setPosX(arg - getPosX());
+    }
+
+
+    //Flip pixel vertically
+    public void flipV(int arg) {
+        setPosY(arg - getPosY());
     }
 
     //Transform pixel to string

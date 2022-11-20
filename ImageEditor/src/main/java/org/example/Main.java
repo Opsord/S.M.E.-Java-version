@@ -50,5 +50,37 @@ public class Main {
         //check if imgHEX01 is compressed
         System.out.println(imgHEX01.isCompressed());
         */
+
+        /*
+        //Horizontal flips
+        //imgBIT01
+        System.out.println(imgBIT01);
+        imgBIT01.flipH();
+        System.out.println(imgBIT01);
+        //imgRTB01
+        System.out.println(imgRGB01);
+        imgRGB01.flipH();
+        System.out.println(imgRGB01);
+        //imgHEX01
+        System.out.println(imgHEX01);
+        imgHEX01.flipH();
+        System.out.println(imgHEX01);
+        */
+
+        /*
+        //Vertical flips
+        //imgBIT01
+        System.out.println(imgBIT01);
+        imgBIT01.flipV();
+        System.out.println(imgBIT01);
+        //imgRTB01
+        System.out.println(imgRGB01);
+        imgRGB01.flipV();
+        System.out.println(imgRGB01);
+        //imgHEX01
+        System.out.println(imgHEX01);
+        imgHEX01.flipV();
+        System.out.println(imgHEX01);
+        */
     }
 }

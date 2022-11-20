@@ -57,6 +57,23 @@ public class Image extends ImageFormat implements ImageOperations {
         return true;
     }
 
+    //Flip Horizontal
+   @Override
+    public void flipH (){
+        int largoImage = getLargo();
+        for(Pixel p:PixelList) {p.flipH(largoImage);}
+    }
+
+    //Flip Vertical
+    @Override
+    public void flipV (){
+        int altoImage = getAlto();
+        for(Pixel p:PixelList) {p.flipV(altoImage);}
+    }
+
+
+        
+
     @Override
     public String toString() {
         return "Image{" +
