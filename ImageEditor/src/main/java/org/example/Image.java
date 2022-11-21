@@ -114,6 +114,21 @@ public class Image extends ImageFormat implements ImageOperations {
     public void rotate90(){
         PixelList.forEach(Pixel::rotate90);
     }
+
+    @Override
+    public ImageCompressed compress(){
+        int largoImage = getLargo();
+        int altoImage = getAlto();
+        //histogram
+        List<List<String>> histogram = histogram();
+        //get the most repeated pixel
+        String mostRepeatedPixel = histogram.get(0).get(0);
+        //get the number of elements that are repeated
+        int elementsRepeated = Integer.parseInt(histogram.get(0).get(1));
+        ImageCompressed imageCompressed = 
+        new ImageCompressed(largoImage, altoImage, PixelList, mostRepeatedPixel, elementsRepeated);
+        return imageCompressed;
+    }
         
 
     @Override

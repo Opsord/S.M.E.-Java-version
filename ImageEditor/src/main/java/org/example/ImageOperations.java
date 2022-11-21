@@ -24,4 +24,6 @@ public interface ImageOperations {
 
     public void rotate90();
 
+    public ImageCompressed compress();
+
 }

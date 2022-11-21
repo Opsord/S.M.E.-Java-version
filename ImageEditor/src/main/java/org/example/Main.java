@@ -143,5 +143,25 @@ public class Main {
         System.out.println("------------------------------------------------------------");
         */
 
+        //compress examples
+        //imgBIT01
+        System.out.println("------------------------------------------------------------");
+        System.out.println(imgBIT01);
+        System.out.println("------------------------------------------------------------");
+        ImageCompressed imgBITComp01 = imgBIT01.compress();
+        System.out.println(imgBITComp01);
+        System.out.println("------------------------------------------------------------");
+        //imgRTB01
+        System.out.println(imgRGB01);
+        System.out.println("------------------------------------------------------------");
+        ImageCompressed imgRGBComp01 = imgRGB01.compress();
+        System.out.println(imgRGBComp01);
+        System.out.println("------------------------------------------------------------");
+        //imgHEX01
+        System.out.println(imgHEX01);
+        System.out.println("------------------------------------------------------------");
+        ImageCompressed imgHEXComp01 = imgHEX01.compress();
+        System.out.println(imgHEXComp01);
+        System.out.println("------------------------------------------------------------");
     }
 }
