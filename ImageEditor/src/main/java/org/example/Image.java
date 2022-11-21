@@ -153,6 +153,24 @@ public class Image extends ImageFormat implements ImageOperations {
     public void invertColorRGB(){
         PixelList.forEach(Pixel::invertColorRGB);
     }
+
+    //print the image as a matrix
+    public String imageToString() {
+        String imageString = "";
+        int largoImage = getLargo();
+        List<Pixel> pixelList = getPixelList();
+        int acc = 0;
+        for(Pixel p:pixelList) {
+            if(acc == largoImage) {
+                imageString += "\n";
+                acc = 0;
+            }
+            imageString += p.getPixelContent() + "\t";
+            acc++;
+        }
+        return imageString;
+        
+    }
         
 
     @Override

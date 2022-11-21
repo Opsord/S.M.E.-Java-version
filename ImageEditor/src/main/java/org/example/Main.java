@@ -195,6 +195,7 @@ public class Main {
         System.out.println("------------------------------------------------------------");
         */
 
+        /*
         //Invert examples
         //imgBIT01
         System.out.println("------------------------------------------------------------");
@@ -209,6 +210,16 @@ public class Main {
         imgRGB01.invertColorRGB();
         System.out.println(imgRGB01);
         System.out.println("------------------------------------------------------------");
+        */
+
+        /*
+        //print examples
+        //imgBIT01
+        System.out.println("------------------------------------------------------------");
+        System.out.println(imgBIT01.imageToString());
+        System.out.println("------------------------------------------------------------");
+        */
+
         
     }
 }
