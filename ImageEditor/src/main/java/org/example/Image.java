@@ -129,6 +129,16 @@ public class Image extends ImageFormat implements ImageOperations {
         new ImageCompressed(largoImage, altoImage, PixelList, mostRepeatedPixel, elementsRepeated);
         return imageCompressed;
     }
+
+    public void changePixel(Pixel pixel){
+        int PosX = pixel.getPosX();
+        int PosY = pixel.getPosY();
+        PixelList.forEach(p -> {
+            if(p.getPosX() == PosX && p.getPosY() == PosY){
+                p.setPixelContent(pixel.getPixelContent());
+            }
+        });
+    }
         
 
     @Override

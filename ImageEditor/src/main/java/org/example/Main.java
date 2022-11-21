@@ -143,6 +143,7 @@ public class Main {
         System.out.println("------------------------------------------------------------");
         */
 
+        /*
         //compress examples
         //imgBIT01
         System.out.println("------------------------------------------------------------");
@@ -162,6 +163,34 @@ public class Main {
         System.out.println("------------------------------------------------------------");
         ImageCompressed imgHEXComp01 = imgHEX01.compress();
         System.out.println(imgHEXComp01);
+        System.out.println("------------------------------------------------------------");
+        */
+
+        //changePixel examples
+        //imgBIT01
+        System.out.println("------------------------------------------------------------");
+        System.out.println(imgBIT01);
+        System.out.println("------------------------------------------------------------");
+        //pixel to change with
+        Pixel pixBIT07 = new Pixel(0, 2, 10, "0");
+        imgBIT01.changePixel(pixBIT07);
+        System.out.println(imgBIT01);
+        System.out.println("------------------------------------------------------------");
+        //imgRTB01
+        System.out.println(imgRGB01);
+        System.out.println("------------------------------------------------------------");
+        //pixel to change with
+        Pixel pixRGB07 = new Pixel(0, 1, 10, "10,10,10");
+        imgRGB01.changePixel(pixRGB07);
+        System.out.println(imgRGB01);
+        System.out.println("------------------------------------------------------------");
+        //imgHEX01
+        System.out.println(imgHEX01);
+        System.out.println("------------------------------------------------------------");
+        //pixel to change with
+        Pixel pixHEX07 = new Pixel(0, 1, 10, "000000");
+        imgHEX01.changePixel(pixHEX07);
+        System.out.println(imgHEX01);
         System.out.println("------------------------------------------------------------");
     }
 }
