@@ -112,6 +112,28 @@ public class Pixel {
         setPosY(-x);
     }
 
+    //invert color of a pixel (BIT)
+    public void invertColorBIT() {
+        if (getPixelContent() == "1") {
+            setPixelContent("0");
+        } else {
+            setPixelContent("1");
+        }
+    }
+
+    //invert color of a pixel (RGB)
+    public void invertColorRGB() {
+        String[] rgb = getPixelContent().split(",");
+        int r = Integer.parseInt(rgb[0]);
+        int g = Integer.parseInt(rgb[1]);
+        int b = Integer.parseInt(rgb[2]);
+        r = 255 - r;
+        g = 255 - g;
+        b = 255 - b;
+        String newRGB = r + "," + g + "," + b;
+        setPixelContent(newRGB);
+    }
+
     //Transform pixel to string
     @Override
     public String toString() {

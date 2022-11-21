@@ -24,7 +24,7 @@ public class Main {
         Pixel pixRGB04 = new Pixel(1, 1, 10, "255,250,40");
         List<Pixel> pixMap01 = Arrays.asList(pixRGB01, pixRGB02, pixRGB03, pixRGB04);
         Image imgRGB01 = new Image(2, 2, pixMap01);
-        //System.out.println(imgRTB01.isPixMap());
+        //System.out.println(imgRGB01.isPixMap());
 
         //Definition of HEX image
         Pixel pixHEX01 = new Pixel(0, 0, 10, "FFFFFF");
@@ -38,7 +38,7 @@ public class Main {
         /*
         //print imgBIT01
         System.out.println(imgBIT01);
-        //print imgRTB01
+        //print imgRGB01
         System.out.println(imgRGB01);
         //print imgHEX01
         System.out.println(imgHEX01);
@@ -48,7 +48,7 @@ public class Main {
         //isCompressed examples
         //check if imgBIT01 is compressed
         System.out.println(imgBIT01.isCompressed());
-        //check if imgRTB01 is compressed
+        //check if imgRGB01 is compressed
         System.out.println(imgRGB01.isCompressed());
         //check if imgHEX01 is compressed
         System.out.println(imgHEX01.isCompressed());
@@ -60,7 +60,7 @@ public class Main {
         System.out.println(imgBIT01);
         imgBIT01.flipH();
         System.out.println(imgBIT01);
-        //imgRTB01
+        //imgRGB01
         System.out.println(imgRGB01);
         imgRGB01.flipH();
         System.out.println(imgRGB01);
@@ -76,7 +76,7 @@ public class Main {
         System.out.println(imgBIT01);
         imgBIT01.flipV();
         System.out.println(imgBIT01);
-        //imgRTB01
+        //imgRGB01
         System.out.println(imgRGB01);
         imgRGB01.flipV();
         System.out.println(imgRGB01);
@@ -92,7 +92,7 @@ public class Main {
         System.out.println(imgBIT01);
         imgBIT01.crop(0,0, 1, 1);
         System.out.println(imgBIT01);
-        //imgRTB01
+        //imgRGB01
         System.out.println(imgRGB01);
         imgRGB01.crop(0,0, 0, 0);
         System.out.println(imgRGB01);
@@ -129,7 +129,7 @@ public class Main {
         imgBIT01.rotate90();
         System.out.println(imgBIT01);
         System.out.println("------------------------------------------------------------");
-        //imgRTB01
+        //imgRGB01
         System.out.println(imgRGB01);
         System.out.println("------------------------------------------------------------");
         imgRGB01.rotate90();
@@ -152,7 +152,7 @@ public class Main {
         ImageCompressed imgBITComp01 = imgBIT01.compress();
         System.out.println(imgBITComp01);
         System.out.println("------------------------------------------------------------");
-        //imgRTB01
+        //imgRGB01
         System.out.println(imgRGB01);
         System.out.println("------------------------------------------------------------");
         ImageCompressed imgRGBComp01 = imgRGB01.compress();
@@ -166,6 +166,7 @@ public class Main {
         System.out.println("------------------------------------------------------------");
         */
 
+        /*
         //changePixel examples
         //imgBIT01
         System.out.println("------------------------------------------------------------");
@@ -176,7 +177,7 @@ public class Main {
         imgBIT01.changePixel(pixBIT07);
         System.out.println(imgBIT01);
         System.out.println("------------------------------------------------------------");
-        //imgRTB01
+        //imgRGB01
         System.out.println(imgRGB01);
         System.out.println("------------------------------------------------------------");
         //pixel to change with
@@ -192,5 +193,22 @@ public class Main {
         imgHEX01.changePixel(pixHEX07);
         System.out.println(imgHEX01);
         System.out.println("------------------------------------------------------------");
+        */
+
+        //Invert examples
+        //imgBIT01
+        System.out.println("------------------------------------------------------------");
+        System.out.println(imgBIT01);
+        System.out.println("------------------------------------------------------------");
+        imgBIT01.invertColorBit();
+        System.out.println(imgBIT01);
+        System.out.println("------------------------------------------------------------");
+        //imgRGB01
+        System.out.println(imgRGB01);
+        System.out.println("------------------------------------------------------------");
+        imgRGB01.invertColorRGB();
+        System.out.println(imgRGB01);
+        System.out.println("------------------------------------------------------------");
+        
     }
 }

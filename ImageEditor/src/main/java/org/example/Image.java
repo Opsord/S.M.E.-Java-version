@@ -111,6 +111,7 @@ public class Image extends ImageFormat implements ImageOperations {
         return histogram;
     }
 
+    @Override
     public void rotate90(){
         PixelList.forEach(Pixel::rotate90);
     }
@@ -130,6 +131,7 @@ public class Image extends ImageFormat implements ImageOperations {
         return imageCompressed;
     }
 
+    @Override
     public void changePixel(Pixel pixel){
         int PosX = pixel.getPosX();
         int PosY = pixel.getPosY();
@@ -138,6 +140,18 @@ public class Image extends ImageFormat implements ImageOperations {
                 p.setPixelContent(pixel.getPixelContent());
             }
         });
+    }
+
+    //invert the color of every BIT pixel
+    @Override
+    public void invertColorBit(){
+        PixelList.forEach(Pixel::invertColorBIT);
+    }
+
+    //invert the color of every RGB pixel
+    @Override
+    public void invertColorRGB(){
+        PixelList.forEach(Pixel::invertColorRGB);
     }
         
 

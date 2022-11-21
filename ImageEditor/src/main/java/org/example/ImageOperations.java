@@ -26,4 +26,10 @@ public interface ImageOperations {
 
     public ImageCompressed compress();
 
+    public void changePixel(Pixel pixel);
+
+    public void invertColorBit();
+
+    public void invertColorRGB();
+
 }
