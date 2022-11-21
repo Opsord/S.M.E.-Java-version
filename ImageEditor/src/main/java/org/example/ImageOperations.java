@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.List;
+
 public interface ImageOperations {
 
     public boolean isBitMap();
@@ -17,5 +19,9 @@ public interface ImageOperations {
     public void crop(int x1, int y1, int x2, int y2);
 
     public void imgRGBToHex();
+
+    public List<List<String>> histogram();
+
+    public void rotate90();
 
 }

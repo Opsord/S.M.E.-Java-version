@@ -1,6 +1,6 @@
 package org.example;
 
-import java.io.PipedInputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -89,7 +89,31 @@ public class Image extends ImageFormat implements ImageOperations {
         PixelList.forEach(Pixel::pixRGBToHex);
     }
 
+    @Override
+    public List<List<String>> histogram() {
+        //get the content of every pixel in the image
+        List<String> imageContent = new ArrayList<>();
+        for(Pixel p:PixelList) {imageContent.add(p.getPixelContent());}
+        //get the unique content of every pixel in the image
+        List<String> uniqueContent = imageContent.stream().distinct().collect(Collectors.toList());
+        //histogram builder
+        List<List<String>> histogram = new ArrayList<>();
+        for(String s:uniqueContent) {
+            List<String> subList = new ArrayList<>();
+            subList.add(s);
+            subList.add(String.valueOf(imageContent.stream().filter(s::equals).count()));
+            histogram.add(subList);
+        }
+        //sort the histogram by the number of occurrences
+        histogram.sort(
+            (o1, o2) -> Integer.parseInt(o2.get(1).toString()) - Integer.parseInt(o1.get(1).toString()));
+        //return the histogram
+        return histogram;
+    }
 
+    public void rotate90(){
+        PixelList.forEach(Pixel::rotate90);
+    }
         
 
     @Override

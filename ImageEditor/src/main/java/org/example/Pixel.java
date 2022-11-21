@@ -104,6 +104,14 @@ public class Pixel {
         setPixelContent(hex);
     }
 
+    //Rotate a pixel 90 degrees
+    public void rotate90() {
+        int x = getPosX();
+        int y = getPosY();
+        setPosX(y);
+        setPosY(-x);
+    }
+
     //Transform pixel to string
     @Override
     public String toString() {
