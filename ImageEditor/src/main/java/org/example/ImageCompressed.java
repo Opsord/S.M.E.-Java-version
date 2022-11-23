@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ImageCompressed extends ImageFormat implements ImageCompressedOp{
@@ -18,17 +19,6 @@ public class ImageCompressed extends ImageFormat implements ImageCompressedOp{
     }
 
     //getters
-    public int getLargoCompressed() {
-        return this.Largo;
-    }
-
-    public int getAltoCompressed() {
-        return this.Alto;
-    }
-
-    public List<Pixel> getPixelListCompressed() {
-        return this.PixelList;
-    }
 
     public String getCompressedContent() {
         return this.CompressedContent;
@@ -47,13 +37,41 @@ public class ImageCompressed extends ImageFormat implements ImageCompressedOp{
         this.ElementsCompressed = elementsCompressed;
     }
 
+    //method to check if the image is compressed
+    @Override
+    public boolean isCompressed(){
+        int largoImage = getLargo();
+        int altoImage = getAlto();
+        int areaImg = largoImage * altoImage;
+        int pixelListSize = getPixelList().size();
+        if(pixelListSize == areaImg) {return true;}
+        else {return false;}
+    }
+    //method to decompress the image
+    @Override
+    public Image decompress() {
+        int largo = getLargo();
+        int alto = getAlto();
+        int defaultDepth = 0;
+        String compressedContent = getCompressedContent();
+        List<List<Integer>> missingPixelCoords = findMissingPixels();
+        List<Pixel> missingPixels = new ArrayList<>();
+        for(List<Integer> coord : missingPixelCoords) {
+            Pixel missingPixel = new Pixel(coord.get(0), coord.get(1), defaultDepth, compressedContent);
+            missingPixels.add(missingPixel);
+        }
+        List<Pixel> pixelList = getPixelList();
+        pixelList.addAll(missingPixels);
+        return new Image(largo, alto, pixelList);
+    }
+
     //toString
     @Override
     public String toString() {
         return "{" +
-            " Largo='" + getLargoCompressed() + "'" +
-            ", Alto='" + getAltoCompressed() + "'" +
-            ", PixelList='" + getPixelListCompressed() + "'" +
+            " Largo='" + getLargo() + "'" +
+            ", Alto='" + getAlto() + "'" +
+            ", PixelList='" + getPixelList() + "'" +
             ", CompressedContent='" + getCompressedContent() + "'" +
             ", ElementsCompressed='" + getElementsCompressed() + "'" +
             "}";

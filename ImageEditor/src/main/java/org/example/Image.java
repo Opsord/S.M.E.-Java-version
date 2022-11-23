@@ -13,25 +13,12 @@ public class Image extends ImageFormat implements ImageOperations {
         PixelList = pixelList;
     }
 
-    //getters and setters
-    public int getLargo() {
-        return this.Largo;
-    }
-
     public void setLargo(int largo) {
         this.Largo = largo;
     }
 
-    public int getAlto() {
-        return this.Alto;
-    }
-
     public void setAlto(int alto) {
         this.Alto = alto;
-    }
-
-    public List<Pixel> getPixelList() {
-        return this.PixelList;
     }
 
     public void setPixelList(List<Pixel> pixelList) {
@@ -57,6 +44,16 @@ public class Image extends ImageFormat implements ImageOperations {
     public boolean isHexMap() {
         PixelList.forEach(Pixel::isPixHEX);
         return true;
+    }
+
+    @Override
+    public boolean isCompressed(){
+        int largoImage = getLargo();
+        int altoImage = getAlto();
+        int areaImg = largoImage * altoImage;
+        int pixelListSize = getPixelList().size();
+        if(pixelListSize == areaImg) {return true;}
+        else {return false;}
     }
 
     //Flip Horizontal
@@ -124,10 +121,14 @@ public class Image extends ImageFormat implements ImageOperations {
         List<List<String>> histogram = histogram();
         //get the most repeated pixel
         String mostRepeatedPixel = histogram.get(0).get(0);
+        //make a new pixel list without the most repeated pixel
+        List<Pixel> newPixelList = PixelList.stream()
+                .filter(p -> !p.getPixelContent().equals(mostRepeatedPixel))
+                .collect(Collectors.toList());
         //get the number of elements that are repeated
         int elementsRepeated = Integer.parseInt(histogram.get(0).get(1));
         ImageCompressed imageCompressed = 
-        new ImageCompressed(largoImage, altoImage, PixelList, mostRepeatedPixel, elementsRepeated);
+        new ImageCompressed(largoImage, altoImage, newPixelList, mostRepeatedPixel, elementsRepeated);
         return imageCompressed;
     }
 
@@ -155,10 +156,21 @@ public class Image extends ImageFormat implements ImageOperations {
     }
 
     //print the image as a matrix
+    @Override
     public String imageToString() {
         String imageString = "";
         int largoImage = getLargo();
         List<Pixel> pixelList = getPixelList();
+        //sort the pixel list by x and y
+        pixelList.sort(
+            (o1, o2) -> {
+                if(o1.getPosX() == o2.getPosX()) {
+                    return o1.getPosY() - o2.getPosY();
+                }
+                else {
+                    return o1.getPosX() - o2.getPosX();
+                }
+            });
         int acc = 0;
         for(Pixel p:pixelList) {
             if(acc == largoImage) {
@@ -169,9 +181,37 @@ public class Image extends ImageFormat implements ImageOperations {
             acc++;
         }
         return imageString;
-        
     }
+
+    /*
+    //separate the image by depth layers
+    public List separateByDepth(){
+        int largoImage = getLargo();
+        int altoImage = getAlto();
+        int areaImg = largoImage * altoImage;
+        //define a white pixel depending on the type of image
+        String whitePixel = "";
+        if(isBitMap()) {whitePixel = "0";}
+        else if(isPixMap()) {whitePixel = "255,255,255";}
+        else if(isHexMap()) {whitePixel = "#FFFFFF";}
         
+        List<Pixel> pixelList = getPixelList();   
+        //get a list of the unique depths
+        List<Integer> uniqueDepths = PixelList.stream().map(Pixel::getDepth).distinct().collect(Collectors.toList());
+        //get a pixel list for each depth
+        List<List<Pixel>> pixelListByDepth = new ArrayList<>();
+        for(Integer i:uniqueDepths) {
+            List<Pixel> subList = new ArrayList<>();
+            for(Pixel p:pixelList) {
+                if(p.getDepth() == i) {
+                    subList.add(p);
+                }
+            }
+            pixelListByDepth.add(subList);
+        }
+        }
+        */
+    
 
     @Override
     public String toString() {
