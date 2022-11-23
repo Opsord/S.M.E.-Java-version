@@ -111,6 +111,12 @@ public class Image extends ImageFormat implements ImageOperations {
     @Override
     public void rotate90(){
         PixelList.forEach(Pixel::rotate90);
+        //get the min value of the X axis and the min value of the Y axis
+        int minPosX = PixelList.stream().mapToInt(Pixel::getPosX).min().getAsInt();
+        int minPosY = PixelList.stream().mapToInt(Pixel::getPosY).min().getAsInt();
+        //translation to the origin
+        for(Pixel p:PixelList) {p.traslatePosX(-minPosX);}
+        for(Pixel p:PixelList) {p.traslatePosY(-minPosY);}
     }
 
     @Override
@@ -190,9 +196,9 @@ public class Image extends ImageFormat implements ImageOperations {
         int depth = PixelList.get(0).getDepth();
         //define a white pixel depending on the type of image
         String whitePixel = "";
-        if(isBitMap()) {whitePixel = "0";}
-        else if(isPixMap()) {whitePixel = "255,255,255";}
-        else if(isHexMap()) {whitePixel = "FFFFFF";}
+        if(PixelList.get(0).isPixBIT()) {whitePixel = "0";}
+        if(PixelList.get(0).isPixRGB()) {whitePixel = "255,255,255";}
+        if(PixelList.get(0).isPixHEX()) {whitePixel = "FFFFFF";}
         //fill the image with white pixels
         List<List<Integer>> cordsToFill = findMissingPixels();
         for(List<Integer> cords:cordsToFill) {

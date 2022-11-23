@@ -26,7 +26,7 @@ public class Main {
         //Definition of RGB image
         Pixel pixRGB01 = new Pixel(0, 0, 10, "255,100,10");
         Pixel pixRGB02 = new Pixel(0, 1, 10, "255,150,20");
-        Pixel pixRGB03 = new Pixel(1, 0, 10, "255,150,20");
+        Pixel pixRGB03 = new Pixel(1, 0, 20, "255,150,20");
         Pixel pixRGB04 = new Pixel(1, 1, 10, "255,250,40");
         List<Pixel> pixMap01 = Arrays.asList(pixRGB01, pixRGB02, pixRGB03, pixRGB04);
         Image imgRGB01 = new Image(2, 2, pixMap01);
@@ -48,6 +48,16 @@ public class Main {
         List<Image> imgBIT01DepthReduced = imgBIT01.separateByDepth();
         System.out.println("Reduced: ");
         for (Image img : imgBIT01DepthReduced) {
+            System.out.println(img.imageToString());
+            System.out.println("-----------------------------");
+        }
+
+        System.out.println(imgRGB01.imageToString());
+        System.out.println("-----------------------------");
+        //depth reduction
+        List<Image> imgRGB01DepthReduced = imgRGB01.separateByDepth();
+        System.out.println("Reduced: ");
+        for (Image img : imgRGB01DepthReduced) {
             System.out.println(img.imageToString());
             System.out.println("-----------------------------");
         }

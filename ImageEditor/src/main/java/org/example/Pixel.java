@@ -49,6 +49,14 @@ public class Pixel {
         this.PixelContent = pixelContent;
     }
 
+    //do a traslation of the pixel
+    public void traslatePosX(int x) {
+        this.PosX += x;
+    }
+    public void traslatePosY(int y) {
+        this.PosY += y;
+    }
+
     //Verification BIT type
     public boolean isPixBIT() {
         if (getPixelContent() == "1" || getPixelContent() == "0") {
