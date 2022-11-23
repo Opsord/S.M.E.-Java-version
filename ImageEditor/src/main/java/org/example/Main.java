@@ -45,17 +45,11 @@ public class Main {
         System.out.println(imgBIT01.imageToString());
         System.out.println("-----------------------------");
         //depth reduction
-        //System.out.println(imgBIT01.separateByDepth());
-        System.out.println(imgBIT01.findMissingPixels());
-        System.out.println("-----------------------------");
-        ImageCompressed imgBITComp01 = imgBIT01.compress();
-        System.out.println(imgBITComp01.toString());
-        System.out.println("-----------------------------");
-        System.out.println(imgBITComp01.getPixelList().size());
-        System.out.println(imgBITComp01.findMissingPixels());
-        System.out.println("-----------------------------");
-        Image imgBITDecomp01 = imgBITComp01.decompress();
-        System.out.println(imgBITDecomp01.imageToString());
-        System.out.println("-----------------------------");
+        List<Image> imgBIT01DepthReduced = imgBIT01.separateByDepth();
+        System.out.println("Reduced: ");
+        for (Image img : imgBIT01DepthReduced) {
+            System.out.println(img.imageToString());
+            System.out.println("-----------------------------");
+        }
     }
 }

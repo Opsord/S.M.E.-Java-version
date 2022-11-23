@@ -34,4 +34,8 @@ public interface ImageOperations {
 
     public String imageToString();
 
+    public void fillImage();
+
+    public List<Image> separateByDepth();
+
 }

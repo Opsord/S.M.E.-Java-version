@@ -183,17 +183,30 @@ public class Image extends ImageFormat implements ImageOperations {
         return imageString;
     }
 
-    /*
-    //separate the image by depth layers
-    public List separateByDepth(){
-        int largoImage = getLargo();
-        int altoImage = getAlto();
-        int areaImg = largoImage * altoImage;
+    //fill with withe pixel assuming that the image is of the same depth
+    @Override
+    public void fillImage() {
+        //get the depth of the first pixel
+        int depth = PixelList.get(0).getDepth();
         //define a white pixel depending on the type of image
         String whitePixel = "";
         if(isBitMap()) {whitePixel = "0";}
         else if(isPixMap()) {whitePixel = "255,255,255";}
-        else if(isHexMap()) {whitePixel = "#FFFFFF";}
+        else if(isHexMap()) {whitePixel = "FFFFFF";}
+        //fill the image with white pixels
+        List<List<Integer>> cordsToFill = findMissingPixels();
+        for(List<Integer> cords:cordsToFill) {
+            Pixel p = new Pixel(cords.get(0), cords.get(1), depth, whitePixel);
+            PixelList.add(p);
+            }
+        }
+
+    //separate the image by depth layers
+    @Override
+    public List<Image> separateByDepth(){
+        List<Image> imageList = new ArrayList<>();
+        int largoImage = getLargo();
+        int altoImage = getAlto();
         
         List<Pixel> pixelList = getPixelList();   
         //get a list of the unique depths
@@ -209,8 +222,15 @@ public class Image extends ImageFormat implements ImageOperations {
             }
             pixelListByDepth.add(subList);
         }
+        //create a new image for each depth
+        for(List<Pixel> p:pixelListByDepth) {
+            Image image = new Image(largoImage, altoImage, p);
+            imageList.add(image);
         }
-        */
+        //fill the images with white pixels
+        imageList.forEach(Image::fillImage);
+        return imageList;
+    }
     
 
     @Override
