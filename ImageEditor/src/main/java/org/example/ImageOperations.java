@@ -26,7 +26,9 @@ public interface ImageOperations {
 
     public ImageCompressed compress();
 
-    public void changePixel(Pixel pixel);
+    public void changePixelContent(int posX, int posY, String newContent);
+
+    public void changePixelDepth(int posX, int posY, int newDepth);
 
     public void invertColorBit();
 

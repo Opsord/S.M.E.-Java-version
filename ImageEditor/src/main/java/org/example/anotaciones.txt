@@ -1,0 +1,222 @@
+  
+    public void editingMenu(int option) {
+        try (Scanner sn = new Scanner(System.in)) {
+            switch(option) {
+                case 1:
+                    System.out.println("You will flip the selected image");
+                    printFlipOptions();
+                    System.out.print("Please enter your option: ");
+                    option = sn.nextInt();
+                    flipMenu(option);
+                    break;
+                case 2:
+                    int posX1;
+                    int posY1;
+                    int posX2;
+                    int posY2;
+                    System.out.println("You will crop an area of the selected image");
+                    System.out.println("Please enter the coordinates of the first corner of the area you want to crop");
+                    System.out.print("X: ");
+                    posX1 = sn.nextInt();
+                    System.out.print("Y: ");
+                    posY1 = sn.nextInt();
+                    System.out.println("Please enter the coordinates of the second corner of the area you want to crop");
+                    System.out.print("X: ");
+                    posX2 = sn.nextInt();
+                    System.out.print("Y: ");
+                    posY2 = sn.nextInt();
+                    for (Image image : availableImages) {
+                        if (image.equals(selectedImage)) {
+                            image.crop(posX1, posY1, posX2, posY2);
+                            selectedImage = image;
+                        }
+                    }
+                    printSelectedImage();
+                    break;
+                case 3:
+                    System.out.println("You will rotate the selected image");
+                    printRotationOptions();
+                    option = sn.nextInt();
+                    rotateMenu(option);
+                    break;
+                case 4:
+                    System.out.println("You will change the selected image's pixels");
+                    printChangePixelOptions();
+                    break;
+                case 5:
+                    System.out.println("You will invert the selected image's colors");
+                    printColorInversionOptions();
+                    break;
+                default:
+                    System.out.println("Invalid option");
+                    break;
+            }
+        }
+
+        catch (Exception e) {
+            System.out.println("Invalid option");
+        }
+
+    }
+
+    public void flipMenu(int option) {
+        switch(option) {
+            case 1:
+                System.out.println("You will flip the selected image vertically");
+                //find the image on availableImages that matches the selectedImage
+                for (Image image : availableImages) {
+                    if (image.equals(selectedImage)) {
+                        image.flipV();
+                        selectedImage = image;
+                    }
+                }
+                printSelectedImage();
+                break;
+            case 2:
+                System.out.println("You will flip the selected image horizontally");
+                for (Image image : availableImages) {
+                    if (image.equals(selectedImage)) {
+                        image.flipH();
+                        selectedImage = image;
+                    }
+                }
+                printSelectedImage();
+                break;
+            default:
+                System.out.println("Invalid option");
+                break;
+        }
+    }
+
+    public void rotateMenu(int option) {
+        switch(option) {
+            case 1:
+                System.out.println("You will rotate the selected image 90 degrees clockwise");
+                for (Image image : availableImages) {
+                    if (image.equals(selectedImage)) {
+                        image.rotate90();
+                        selectedImage = image;
+                    }
+                }
+                printSelectedImage();
+                break;
+            case 2:
+                System.out.println("You will rotate the selected image 90 degrees counterclockwise");
+                for (Image image : availableImages) {
+                    if (image.equals(selectedImage)) {
+                        image.rotate90();
+                        image.rotate90();
+                        image.rotate90();
+                        selectedImage = image;
+                    }
+                }
+                printSelectedImage();
+                break;
+            case 3:
+                System.out.println("You will rotate the selected image 180 degrees");
+                for (Image image : availableImages) {
+                    if (image.equals(selectedImage)) {
+                        image.rotate90();
+                        image.rotate90();
+                        selectedImage = image;
+                    }
+                }
+                printSelectedImage();
+                break;
+            default:
+                System.out.println("Invalid option");
+                break;
+        }
+    }   
+    
+    public void changeSelectedImagePixel(int option) {
+        try (Scanner sn = new Scanner(System.in)) {
+            int posX;
+            int posY;
+            String content;
+            int depth;
+            switch(option) {
+                case 1:
+                    System.out.println("You will change a pixel's color/content");
+                    System.out.println("Please enter the coordinates of the pixel you want to change");
+                    System.out.print("X: ");
+                    posX = sn.nextInt();
+                    System.out.print("Y: ");
+                    posY = sn.nextInt();
+                    System.out.println("Please enter the new color/content");
+                    System.out.print("Color: ");
+                    content = sn.nextLine();
+                    for (Image image : availableImages) {
+                        if (image.equals(selectedImage)) {
+                            image.changePixelContent(posX, posY, content);
+                            selectedImage = image;
+                        }
+                    }
+                    printSelectedImage();
+                    break;
+                case 2:
+                    System.out.println("You will change a pixel's depth");
+                    System.out.println("Please enter the coordinates of the pixel you want to change");
+                    System.out.print("X: ");
+                    posX = sn.nextInt();
+                    System.out.print("Y: ");
+                    posY = sn.nextInt();
+                    System.out.println("Please enter the new depth");
+                    System.out.print("Depth: ");
+                    depth = sn.nextInt();
+                    for (Image image : availableImages) {
+                        if (image.equals(selectedImage)) {
+                            image.changePixelDepth(posX, posY, depth);
+                            selectedImage = image;
+                        }
+                    }
+                    printSelectedImage();
+                    break;
+                default:
+                    System.out.println("Invalid option");
+                    break;
+            }
+        }
+
+        catch (Exception e) {
+            System.out.println("Invalid option");
+        }
+    }
+
+    public void utilitiesMenu(int option) {
+        switch(option) {
+            case 1:
+                System.out.println("You will now select wich image you want to display");
+                System.out.println("Please select an image from the list below: \n");
+                //print the list of images
+                int selector;
+                printAvailableImages();
+
+                System.out.print("\nYour choice: ");
+                Scanner sn = new Scanner(System.in);
+                selector = sn.nextInt();
+                selectImageFromList(selector-1);
+                
+                printSelectedImage();
+                break;
+            case 2:
+                System.out.println("You selected option 4");
+                break;
+            case 3:
+                System.out.println("You selected option 5");
+                break;
+            case 4:
+                System.out.println("You selected option 5");
+                break;
+            case 5:
+                System.out.println("You selected option 5");
+                break;
+            case 50:
+                System.out.println("You selected option 50");
+                break;
+            default:
+                System.out.println("Invalid option");
+                break;
+        }
+    }
+}

@@ -6,23 +6,23 @@ import java.util.List;
 public abstract class ImageFormat {
 
     //Image elements
-    int Largo;
+    int largo;
 
-    int Alto;
+    int alto;
 
-    List<Pixel> PixelList;
+    List<Pixel> pixelList;
 
     //getter
     public int getLargo() {
-        return this.Largo;
+        return this.largo;
     }
 
     public int getAlto() {
-        return this.Alto;
+        return this.alto;
     }
 
     public List<Pixel> getPixelList() {
-        return this.PixelList;
+        return this.pixelList;
     }
 
     //method to check if the image is compressed

@@ -4,76 +4,100 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This is probably the most used class in this program, an image is basically an array of
+ * pixels that can be manipulated
+ *
+ * @author Andres Zelaya Droguett
+ */
 public class Image extends ImageFormat implements ImageOperations {
-
     //constructor
     public Image(int largo, int alto, List<Pixel> pixelList) {
-        Largo = largo;
-        Alto = alto;
-        PixelList = pixelList;
+        this.largo = largo;
+        this.alto = alto;
+        this.pixelList = pixelList;
     }
 
-    public void setLargo(int largo) {
-        this.Largo = largo;
-    }
-
-    public void setAlto(int alto) {
-        this.Alto = alto;
-    }
-
+    /**
+     * Method to change the list of pixels of the image to another
+     * @param pixelList List of pixels of the image
+     */
     public void setPixelList(List<Pixel> pixelList) {
-        this.PixelList = pixelList;
+        this.pixelList = pixelList;
     }
 
-    //Verification BIT type
+    /**
+     * Method to verify if every pixel of the image is BIT type
+     * @return Boolean of the consult
+     */
     @Override
     public boolean isBitMap() {
-        PixelList.forEach(Pixel::isPixBIT);
+        pixelList.forEach(Pixel::isPixBIT);
         return true;
     }
 
-    //Verification RGB type
+    /**
+     * Method to verify if every pixel of the image is RGB type
+     * @return Boolean of the consult
+     */
     @Override
     public boolean isPixMap() {
-        PixelList.forEach(Pixel::isPixRGB);
+        pixelList.forEach(Pixel::isPixRGB);
         return true;
     }
 
-    //Verification HEX type
+    /**
+     * Method to verify if every pixel of the image is hexadecimal type
+     * @return Boolean of the consult
+     */
     @Override
     public boolean isHexMap() {
-        PixelList.forEach(Pixel::isPixHEX);
+        pixelList.forEach(Pixel::isPixHEX);
         return true;
     }
 
+    /**
+     * Since this is an image class, it will never be compressed,
+     * Compressed images has their own class
+     * @return Boolean of the consult
+     */
     @Override
     public boolean isCompressed(){
-        int largoImage = getLargo();
-        int altoImage = getAlto();
-        int areaImg = largoImage * altoImage;
-        int pixelListSize = getPixelList().size();
-        if(pixelListSize == areaImg) {return true;}
-        else {return false;}
+        return false;
     }
 
-    //Flip Horizontal
-   @Override
+    /**
+     * Method that flips the image horizontally
+     * changing the position of every pixel
+     */
+    @Override
     public void flipH() {
         int largoImage = getLargo();
-        for(Pixel p:PixelList) {p.flipH(largoImage);}
+        for(Pixel p: pixelList) {p.flipH(largoImage);}
     }
 
-    //Flip Vertical
+    /**
+     * Method that flips the image vertically
+     * changing the position of every pixel
+     */
     @Override
     public void flipV () {
         int altoImage = getAlto();
-        for(Pixel p:PixelList) {p.flipV(altoImage);}
+        for(Pixel p: pixelList) {p.flipV(altoImage);}
     }
 
+    /**
+     * Obtain a certain area of the image, this area
+     * can be a square or a rectangle
+     * @param x1 First X coordinate of the quadrant
+     * @param y1 First Y coordinate of the quadrant
+     * @param x2 Second X coordinate of the quadrant
+     * @param y2 Second Y coordinate of the quadrant
+     */
     @Override
     public void crop(int x1, int y1, int x2, int y2) {
         //filter the pixels that are inside the crop area
-        List<Pixel> cropList = PixelList.stream()
+        List<Pixel> cropList = pixelList.stream()
                 .filter(p -> p.getPosX() >= x1 && p.getPosX() <= x2 && p.getPosY() >= y1 && p.getPosY() <= y2)
                 .collect(Collectors.toList());
 
@@ -81,16 +105,23 @@ public class Image extends ImageFormat implements ImageOperations {
         setPixelList(cropList);
     }
 
+    /**
+     * Method that changes pixel by pixel from RGB to hexadecimal type
+     */
     @Override
     public void imgRGBToHex() {
-        PixelList.forEach(Pixel::pixRGBToHex);
+        pixelList.forEach(Pixel::pixRGBToHex);
     }
 
+    /**
+     * Method that gets how many times each pixel color/content appears in the image
+     * @return Histogram of colors/content
+     */
     @Override
     public List<List<String>> histogram() {
         //get the content of every pixel in the image
         List<String> imageContent = new ArrayList<>();
-        for(Pixel p:PixelList) {imageContent.add(p.getPixelContent());}
+        for(Pixel p: pixelList) {imageContent.add(p.getPixelContent());}
         //get the unique content of every pixel in the image
         List<String> uniqueContent = imageContent.stream().distinct().collect(Collectors.toList());
         //histogram builder
@@ -103,22 +134,27 @@ public class Image extends ImageFormat implements ImageOperations {
         }
         //sort the histogram by the number of occurrences
         histogram.sort(
-            (o1, o2) -> Integer.parseInt(o2.get(1).toString()) - Integer.parseInt(o1.get(1).toString()));
+            (o1, o2) -> Integer.parseInt(o2.get(1)) - Integer.parseInt(o1.get(1)));
         //return the histogram
         return histogram;
     }
 
+    /**
+     * Method that rotates the image 90° clock-wise
+     */
     @Override
     public void rotate90(){
-        PixelList.forEach(Pixel::rotate90);
-        //get the min value of the X axis and the min value of the Y axis
-        int minPosX = PixelList.stream().mapToInt(Pixel::getPosX).min().getAsInt();
-        int minPosY = PixelList.stream().mapToInt(Pixel::getPosY).min().getAsInt();
+        pixelList.forEach(Pixel::rotate90);
+        //get the min value of the Y axis
+        int minPosY = pixelList.stream().mapToInt(Pixel::getPosY).min().getAsInt();
         //translation to the origin
-        for(Pixel p:PixelList) {p.traslatePosX(-minPosX);}
-        for(Pixel p:PixelList) {p.traslatePosY(-minPosY);}
+        for(Pixel p: pixelList) {p.translatePosY(-minPosY);}
     }
 
+    /**
+     * Get an alternative version of the image where the most repeated color/content is deleted but can be restored
+     * @return Compressed Image
+     */
     @Override
     public ImageCompressed compress(){
         int largoImage = getLargo();
@@ -128,43 +164,74 @@ public class Image extends ImageFormat implements ImageOperations {
         //get the most repeated pixel
         String mostRepeatedPixel = histogram.get(0).get(0);
         //make a new pixel list without the most repeated pixel
-        List<Pixel> newPixelList = PixelList.stream()
+        List<Pixel> newPixelList = pixelList.stream()
                 .filter(p -> !p.getPixelContent().equals(mostRepeatedPixel))
                 .collect(Collectors.toList());
         //get the number of elements that are repeated
         int elementsRepeated = Integer.parseInt(histogram.get(0).get(1));
-        ImageCompressed imageCompressed = 
-        new ImageCompressed(largoImage, altoImage, newPixelList, mostRepeatedPixel, elementsRepeated);
-        return imageCompressed;
+        return new ImageCompressed(largoImage, altoImage, newPixelList, mostRepeatedPixel, elementsRepeated);
     }
 
+    /**
+     * Method that changes the color/content of a determined pixel
+     * @param posX X coordinate of the target pixel
+     * @param posY Y coordinate of the target pixel
+     * @param newContent New color/content
+     */
     @Override
-    public void changePixel(Pixel pixel){
-        int PosX = pixel.getPosX();
-        int PosY = pixel.getPosY();
-        PixelList.forEach(p -> {
-            if(p.getPosX() == PosX && p.getPosY() == PosY){
-                p.setPixelContent(pixel.getPixelContent());
-            }
-        });
+    public void changePixelContent(int posX, int posY, String newContent) {
+        //get the pixel that is going to be changed
+        Pixel pixelToChange = pixelList.stream()
+                .filter(p -> p.getPosX() == posX && p.getPosY() == posY)
+                .findFirst()
+                .orElse(null);
+        //change the content of the pixel
+        assert pixelToChange != null;
+        pixelToChange.setPixelContent(newContent);
     }
 
-    //invert the color of every BIT pixel
+    /**
+     * Method that changes the depth value of a determined pixel
+     * @param posX X coordinate of the target pixel
+     * @param posY Y coordinate of the target pixel
+     * @param newDepth New depth value
+     */
+    @Override
+    public void changePixelDepth(int posX, int posY, int newDepth) {
+        //get the pixel that is going to be changed
+        Pixel pixelToChange = pixelList.stream()
+                .filter(p -> p.getPosX() == posX && p.getPosY() == posY)
+                .findFirst()
+                .orElse(null);
+        //change the depth of the pixel
+        assert pixelToChange != null;
+        pixelToChange.setDepth(newDepth);
+    }
+
+    /**
+     * Method that inverts the color of every BIT pixel type on an image
+     */
     @Override
     public void invertColorBit(){
-        PixelList.forEach(Pixel::invertColorBIT);
+        pixelList.forEach(Pixel::invertColorBIT);
     }
 
-    //invert the color of every RGB pixel
+    /**
+     * Method that inverts the color of every RGB pixel type on an image
+     */
     @Override
     public void invertColorRGB(){
-        PixelList.forEach(Pixel::invertColorRGB);
+        pixelList.forEach(Pixel::invertColorRGB);
     }
 
-    //print the image as a matrix
+    /**
+     * Method that sorts and transforms an image int oa string that can
+     * be displayed on console
+     * @return String with format
+     */
     @Override
     public String imageToString() {
-        String imageString = "";
+        StringBuilder imageString = new StringBuilder();
         int largoImage = getLargo();
         List<Pixel> pixelList = getPixelList();
         //sort the pixel list by x and y
@@ -180,34 +247,42 @@ public class Image extends ImageFormat implements ImageOperations {
         int acc = 0;
         for(Pixel p:pixelList) {
             if(acc == largoImage) {
-                imageString += "\n";
+                imageString.append("\n");
                 acc = 0;
             }
-            imageString += p.getPixelContent() + "\t";
+            imageString.append(p.getPixelContent()).append("\t");
             acc++;
         }
-        return imageString;
+        return imageString.toString();
     }
 
-    //fill with withe pixel assuming that the image is of the same depth
+    /**
+     * Method that assumes that all the pixels of the image have the same depth
+     * and takes the first pixel´s depth and uses it to generate new white pixels if
+     * the image is not completed
+     */
     @Override
     public void fillImage() {
         //get the depth of the first pixel
-        int depth = PixelList.get(0).getDepth();
+        int depth = pixelList.get(0).getDepth();
         //define a white pixel depending on the type of image
         String whitePixel = "";
-        if(PixelList.get(0).isPixBIT()) {whitePixel = "0";}
-        if(PixelList.get(0).isPixRGB()) {whitePixel = "255,255,255";}
-        if(PixelList.get(0).isPixHEX()) {whitePixel = "FFFFFF";}
+        if(pixelList.get(0).isPixBIT()) {whitePixel = "0";}
+        if(pixelList.get(0).isPixRGB()) {whitePixel = "255,255,255";}
+        if(pixelList.get(0).isPixHEX()) {whitePixel = "FFFFFF";}
         //fill the image with white pixels
         List<List<Integer>> cordsToFill = findMissingPixels();
         for(List<Integer> cords:cordsToFill) {
             Pixel p = new Pixel(cords.get(0), cords.get(1), depth, whitePixel);
-            PixelList.add(p);
+            pixelList.add(p);
             }
         }
 
-    //separate the image by depth layers
+    /**
+     * Method that generates a new image for every different depth value on
+     * the pixels
+     * @return List of images
+     */
     @Override
     public List<Image> separateByDepth(){
         List<Image> imageList = new ArrayList<>();
@@ -216,7 +291,7 @@ public class Image extends ImageFormat implements ImageOperations {
         
         List<Pixel> pixelList = getPixelList();   
         //get a list of the unique depths
-        List<Integer> uniqueDepths = PixelList.stream().map(Pixel::getDepth).distinct().collect(Collectors.toList());
+        List<Integer> uniqueDepths = this.pixelList.stream().map(Pixel::getDepth).distinct().collect(Collectors.toList());
         //get a pixel list for each depth
         List<List<Pixel>> pixelListByDepth = new ArrayList<>();
         for(Integer i:uniqueDepths) {
@@ -237,14 +312,17 @@ public class Image extends ImageFormat implements ImageOperations {
         imageList.forEach(Image::fillImage);
         return imageList;
     }
-    
 
+    /**
+     * Method that converts the image into a string with the image´s information
+     * @return String
+     */
     @Override
     public String toString() {
         return "Image{" +
-                "Largo=" + Largo +
-                ", Alto=" + Alto +
-                ", PixelList=" + PixelList +
+                "Largo=" + largo +
+                ", Alto=" + alto +
+                ", PixelList=" + pixelList +
                 '}';
     }
 }

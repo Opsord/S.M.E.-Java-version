@@ -11,9 +11,9 @@ public class ImageCompressed extends ImageFormat implements ImageCompressedOp{
     
     //constructor
     public ImageCompressed(int largo, int alto, List<Pixel> pixelList, String compressedContent, int elementsCompressed) {
-        Largo = largo;
-        Alto = alto;
-        PixelList = pixelList;
+        this.largo = largo;
+        this.alto = alto;
+        this.pixelList = pixelList;
         CompressedContent = compressedContent;
         ElementsCompressed = elementsCompressed;
     }
