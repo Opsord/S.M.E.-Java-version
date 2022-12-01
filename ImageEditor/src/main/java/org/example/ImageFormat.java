@@ -3,32 +3,62 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is the regular format of an image, normal or compressed
+ *
+ * @author Andres Zelaya Droguett
+ */
 public abstract class ImageFormat {
 
-    //Image elements
+    /**
+     * Long of the image
+     */
     int largo;
 
+    /**
+     * High of the image
+     */
     int alto;
 
+    /**
+     * List of pixels that compose the image
+     */
     List<Pixel> pixelList;
 
-    //getter
+    /**
+     * Method that gets how long in terms of pixels the image is
+     * @return Long of the image
+     */
     public int getLargo() {
         return this.largo;
     }
 
+    /**
+     * Methods that gets how high in terms of pixels the image is
+     * @return High of the image
+     */
     public int getAlto() {
         return this.alto;
     }
 
+    /**
+     * Method that gets the list of pixels that compose the image
+     * @return List of pixels
+     */
     public List<Pixel> getPixelList() {
         return this.pixelList;
     }
 
-    //method to check if the image is compressed
+    /**
+     * Methods that checks if the image is compressed
+     * @return Boolean of the consult
+     */
     public abstract boolean isCompressed();
 
-    //method to find missing pixel coordinates on a list
+    /**
+     * Methods that gets the coordinates of missing pixels of an image
+     * @return List of coordinates
+     */
     public List<List<Integer>> findMissingPixels(){
         int largoImage = getLargo();
         int altoImage = getAlto();

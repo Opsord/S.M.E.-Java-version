@@ -19,7 +19,7 @@ public class Main {
 
         //create scanner
         try (Scanner principalScanner = new Scanner(System.in)) {
-            while (exit != true) {
+            while (!exit) {
                 Menu.printHeader();
                 Menu.printPrincipalMenu();
 
@@ -50,7 +50,6 @@ public class Main {
                         menu.addImageToList(newImage);
                         System.out.println("\nImage created successfully");
                         break;
-                    /*
                     case 4:
                         //image selection
                         System.out.println("You will now manipulate an image");
@@ -67,12 +66,12 @@ public class Main {
                         menu.editingMenu(option);
                         break;                
                     case 5:
+
                         Menu.printImageUtilitiesMenu();
                         System.out.print("\nPlease select what do you want to do with the image: ");
-                        //option = principalScanner.nextInt();
-                        //menu.utilitiesMenu(option);
+                        option = principalScanner.nextInt();
+                        menu.imageUtilitiesMenu(option);
                         break;
-                    */   
                     default: 
                         System.out.println("Invalid option");
                         break;
