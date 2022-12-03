@@ -8,10 +8,36 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        //Testing image 1
+        Pixel pixBIT01 = new Pixel(0,0,10,"1");
+        Pixel pixBIT02 = new Pixel(0,1,10,"0");
+        Pixel pixBIT03 = new Pixel(0,2,10,"1");
+        Pixel pixBIT04 = new Pixel(1,0,10,"0");
+        Pixel pixBIT05 = new Pixel(1,1,10,"1");
+        Pixel pixBIT06 = new Pixel(1,2,10,"0");
+        Pixel pixBIT07 = new Pixel(2,0,10,"0");
+        Pixel pixBIT08 = new Pixel(2,1,10,"0");
+        Pixel pixBIT09 = new Pixel(2,2,10,"1");
+        //definition of bitmap01
+        List<Pixel> bitmap01 = new ArrayList<>();
+        bitmap01.add(pixBIT01);
+        bitmap01.add(pixBIT02);
+        bitmap01.add(pixBIT03);
+        bitmap01.add(pixBIT04);
+        bitmap01.add(pixBIT05);
+        bitmap01.add(pixBIT06);
+        bitmap01.add(pixBIT07);
+        bitmap01.add(pixBIT08);
+        bitmap01.add(pixBIT09);
+        //definition of imageBIT01
+        Image imageBIT01 = new Image(3,3,bitmap01);
+
         //create menu
         List<Image> availableImages = new ArrayList<>();
         List<ImageCompressed> availableCompressedImages = new ArrayList<>();
         Menu menu = new Menu(availableImages, availableCompressedImages);
+        //add imageBIT01 to menu
+        availableImages.add(imageBIT01);
 
         boolean exit = false;
         int option = -1;

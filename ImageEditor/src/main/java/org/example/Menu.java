@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,50 +19,17 @@ public class Menu {
     /**
      * List of all available images for manipulation
      */
-    private List<Image> availableImages;
+    private final List<Image> availableImages;
 
     /**
      * List of available compressed images
      */
-    private List<ImageCompressed> compressedImages;
+    private final List<ImageCompressed> compressedImages;
 
     //constructor
     public Menu(List<Image> availableImages, List<ImageCompressed> compressedImages) {
         this.availableImages = availableImages;
         this.compressedImages = compressedImages;
-    }
-
-
-    /**
-     * Method that gets the selected image
-     * @return Selected image
-     */
-    public Image getSelectedImage() {
-        return selectedImage;
-    }
-
-    /**
-     * Method that gets as a list all the available images for manipulation
-     * @return Available images
-     */
-    public List<Image> getAvailableImages() {
-        return availableImages;
-    }
-
-    /**
-     * Method that gets as a list all compressed images
-     * @return Available compressed images
-     */
-    public List<ImageCompressed> getAvailableCompressedImages() {
-        return compressedImages;
-    }
-
-    /**
-     * Method that select an image to manipulate
-     * @param image Image that is being selected
-     */
-    public void setSelectedImage(Image image) {
-        this.selectedImage = image;
     }
 
     //menu utility methods
@@ -81,14 +47,6 @@ public class Menu {
      */
     public void addImageToList(Image image) {
         this.availableImages.add(image);
-    }
-
-    /**
-     * Method to add a compressed image to the list of compressed images
-     * @param image Compressed image that will be added to the list
-     */
-    public void addCompressedImageToList(ImageCompressed image) {
-        this.compressedImages.add(image);
     }
 
     /**
@@ -202,7 +160,7 @@ public class Menu {
      */
     public static void printPrincipalMenu() {
         System.out.println("\nWhat do you want to do?");
-        System.out.println("1. Display available images");
+        System.out.println("1. List available images");
         System.out.println("2. Select an image");
         System.out.println("3. Create a new image from scratch");
         System.out.println("4. Manipulate an image");
@@ -503,8 +461,7 @@ public class Menu {
                 listAvailableCompressedImages();
                 break;
             case 5:
-                ImageCompressed imageDecompressed;
-                System.out.println("Select the image that you want to compress");
+                System.out.println("Select the image that you want to decompress");
                 listAvailableCompressedImages();
                 System.out.print("\nYour choice: ");
                 option = utilitiesMenu.nextInt();
@@ -523,16 +480,14 @@ public class Menu {
                 System.out.println(selectedImage.histogram());
                 break;
             case 7:
-                List<Image> separatedImages = new ArrayList<>();
+                List<Image> separatedImages;
                 System.out.println("Select the image that you want to separate by depth");
                 listAvailableCompressedImages();
                 System.out.print("\nYour choice: ");
                 option = utilitiesMenu.nextInt();
                 selectImageFromList(option - 1);
                 separatedImages = selectedImage.separateByDepth();
-                for (Image image : separatedImages) {
-                    availableImages.add(image);
-                }
+                availableImages.addAll(separatedImages);
                 System.out.println("Image separated, check on available list");
                 break;
             default:

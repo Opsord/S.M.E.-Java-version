@@ -4,40 +4,40 @@ import java.util.List;
 
 public interface ImageOperations {
 
-    public boolean isBitMap();
+    boolean isBitMap();
 
-    public boolean isPixMap();
+    boolean isPixMap();
 
-    public boolean isHexMap();
+    boolean isHexMap();
 
-    public boolean isCompressed();
+    boolean isCompressed();
 
-    public void flipH();
+    void flipH();
 
-    public void flipV();
+    void flipV();
 
-    public void crop(int x1, int y1, int x2, int y2);
+    void crop(int x1, int y1, int x2, int y2);
 
-    public void imgRGBToHex();
+    void imgRGBToHex();
 
-    public List<List<String>> histogram();
+    List<List<String>> histogram();
 
-    public void rotate90();
+    void rotate90();
 
-    public ImageCompressed compress();
+    ImageCompressed compress();
 
-    public void changePixelContent(int posX, int posY, String newContent);
+    void changePixelContent(int posX, int posY, String newContent);
 
-    public void changePixelDepth(int posX, int posY, int newDepth);
+    void changePixelDepth(int posX, int posY, int newDepth);
 
-    public void invertColorBit();
+    void invertColorBit();
 
-    public void invertColorRGB();
+    void invertColorRGB();
 
-    public String imageToString();
+    String imageToString();
 
-    public void fillImage();
+    void fillImage();
 
-    public List<Image> separateByDepth();
+    List<Image> separateByDepth();
 
 }

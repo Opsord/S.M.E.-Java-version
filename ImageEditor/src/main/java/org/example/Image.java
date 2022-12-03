@@ -97,10 +97,16 @@ public class Image extends ImageFormat implements ImageOperations {
     @Override
     public void crop(int x1, int y1, int x2, int y2) {
         //filter the pixels that are inside the crop area
-        List<Pixel> cropList = pixelList.stream()
-                .filter(p -> p.getPosX() >= x1 && p.getPosX() <= x2 && p.getPosY() >= y1 && p.getPosY() <= y2)
+        List<Pixel> cropList = this.pixelList.stream()
+                .filter(p ->
+                        (p.getPosX() >= x1 && p.getPosX() <= x2 && p.getPosY() >= y1 && p.getPosY() <= y2))
                 .collect(Collectors.toList());
-
+        //get the new size of the image
+        int newLargo = x2 - x1 + 1;
+        int newAlto = y2 - y1 + 1;
+        //set the new size of the image
+        setLargo(newLargo);
+        setAlto(newAlto);
         //set the new pixel list
         setPixelList(cropList);
     }
@@ -231,7 +237,6 @@ public class Image extends ImageFormat implements ImageOperations {
      */
     @Override
     public String imageToString() {
-        StringBuilder imageString = new StringBuilder();
         int largoImage = getLargo();
         List<Pixel> pixelList = getPixelList();
         //sort the pixel list by x and y
@@ -244,14 +249,13 @@ public class Image extends ImageFormat implements ImageOperations {
                     return o1.getPosX() - o2.getPosX();
                 }
             });
-        int acc = 0;
-        for(Pixel p:pixelList) {
-            if(acc == largoImage) {
+        //string creation with \n and \t
+        StringBuilder imageString = new StringBuilder();
+        for(int i = 0; i < pixelList.size(); i++) {
+            if(i % largoImage == 0) {
                 imageString.append("\n");
-                acc = 0;
             }
-            imageString.append(p.getPixelContent()).append("\t");
-            acc++;
+            imageString.append(pixelList.get(i).getPixelContent()).append("\t");
         }
         return imageString.toString();
     }

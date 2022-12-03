@@ -42,6 +42,22 @@ public abstract class ImageFormat {
     }
 
     /**
+     * Method to change the long dimension of an image
+     * @param largo New long
+     */
+    public void setLargo(int largo) {
+        this.largo = largo;
+    }
+
+    /**
+     * Method to change the high dimension of an image
+     * @param alto New high
+     */
+    public void setAlto(int alto) {
+        this.alto = alto;
+    }
+
+    /**
      * Method that gets the list of pixels that compose the image
      * @return List of pixels
      */
