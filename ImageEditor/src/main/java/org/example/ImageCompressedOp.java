@@ -4,5 +4,5 @@ public interface ImageCompressedOp {
 
    public boolean isCompressed();
 
-   public Image decompress();
+   public Image_200958322_ZelayaDroguett200958322ZelayaDroguett decompress();
 }

@@ -24,7 +24,7 @@ public interface ImageOperations {
 
     void rotate90();
 
-    ImageCompressed compress();
+    ImageCompressed_200958322_ZelayaDroguett200958322ZelayaDroguett compress();
 
     void changePixelContent(int posX, int posY, String newContent);
 
@@ -38,6 +38,6 @@ public interface ImageOperations {
 
     void fillImage();
 
-    List<Image> separateByDepth();
+    List<Image_200958322_ZelayaDroguett200958322ZelayaDroguett> separateByDepth();
 
 }

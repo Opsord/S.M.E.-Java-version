@@ -30,14 +30,14 @@ public class Main {
         bitmap01.add(pixBIT08);
         bitmap01.add(pixBIT09);
         //definition of imageBIT01
-        Image imageBIT01 = new Image(3,3,bitmap01);
+        Image_200958322_ZelayaDroguett200958322ZelayaDroguett image200958322ZelayaDroguettBIT01 = new Image_200958322_ZelayaDroguett200958322ZelayaDroguett(3,3,bitmap01);
 
         //create menu
-        List<Image> availableImages = new ArrayList<>();
-        List<ImageCompressed> availableCompressedImages = new ArrayList<>();
-        Menu menu = new Menu(availableImages, availableCompressedImages);
+        List<Image_200958322_ZelayaDroguett200958322ZelayaDroguett> availableImage200958322ZelayaDroguetts = new ArrayList<>();
+        List<ImageCompressed_200958322_ZelayaDroguett200958322ZelayaDroguett> availableCompressedImages = new ArrayList<>();
+        Menu_200958322_ZelayaDroguett menu200958322ZelayaDroguett = new Menu_200958322_ZelayaDroguett(availableImage200958322ZelayaDroguetts, availableCompressedImages);
         //add imageBIT01 to menu
-        availableImages.add(imageBIT01);
+        availableImage200958322ZelayaDroguetts.add(image200958322ZelayaDroguettBIT01);
 
         boolean exit = false;
         int option = -1;
@@ -46,8 +46,8 @@ public class Main {
         //create scanner
         try (Scanner principalScanner = new Scanner(System.in)) {
             while (!exit) {
-                Menu.printHeader();
-                Menu.printPrincipalMenu();
+                Menu_200958322_ZelayaDroguett.printHeader();
+                Menu_200958322_ZelayaDroguett.printPrincipalMenu();
 
                 System.out.print("\nPlease select an option: ");
                 if(principalScanner.hasNext()){
@@ -60,43 +60,43 @@ public class Main {
                         System.out.println("Thank you for using the program <3");
                         break;
                     case 1:
-                        menu.listAvailableImages();
+                        menu200958322ZelayaDroguett.listAvailableImages();
                         break;    
                     case 2:
-                        menu.listAvailableImages();
+                        menu200958322ZelayaDroguett.listAvailableImages();
                         System.out.println("Now you can select an image: ");
                         option = principalScanner.nextInt();
-                        menu.selectImageFromList(option);
-                        menu.printSelectedImage();
+                        menu200958322ZelayaDroguett.selectImageFromList(option);
+                        menu200958322ZelayaDroguett.printSelectedImage();
                         break;   
                     case 3:
-                        Image newImage;
+                        Image_200958322_ZelayaDroguett200958322ZelayaDroguett newImage200958322ZelayaDroguett;
                         System.out.println("You will now create a new image from scratch");
-                        newImage = menu.createImageFromScratch();
-                        menu.addImageToList(newImage);
+                        newImage200958322ZelayaDroguett = menu200958322ZelayaDroguett.createImageFromScratch();
+                        menu200958322ZelayaDroguett.addImageToList(newImage200958322ZelayaDroguett);
                         System.out.println("\nImage created successfully");
                         break;
                     case 4:
                         //image selection
                         System.out.println("You will now manipulate an image");
-                        menu.listAvailableImages();
+                        menu200958322ZelayaDroguett.listAvailableImages();
                         System.out.print("\nPlease select an image: ");
                         int imageToManipulate = principalScanner.nextInt();
-                        menu.selectImageFromList(imageToManipulate-1);
+                        menu200958322ZelayaDroguett.selectImageFromList(imageToManipulate-1);
                         System.out.println("Image selected successfully");
-                        menu.printSelectedImage();
+                        menu200958322ZelayaDroguett.printSelectedImage();
                         //image manipulation
-                        Menu.printEditingMenu();
+                        Menu_200958322_ZelayaDroguett.printEditingMenu();
                         System.out.print("\nPlease select what do you want to do with the image: ");
                         option = principalScanner.nextInt();
-                        menu.editingMenu(option);
+                        menu200958322ZelayaDroguett.editingMenu(option);
                         break;                
                     case 5:
 
-                        Menu.printImageUtilitiesMenu();
+                        Menu_200958322_ZelayaDroguett.printImageUtilitiesMenu();
                         System.out.print("\nPlease select what do you want to do with the image: ");
                         option = principalScanner.nextInt();
-                        menu.imageUtilitiesMenu(option);
+                        menu200958322ZelayaDroguett.imageUtilitiesMenu(option);
                         break;
                     default: 
                         System.out.println("Invalid option");

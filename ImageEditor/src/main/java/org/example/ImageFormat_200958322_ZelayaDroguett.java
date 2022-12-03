@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author Andres Zelaya Droguett
  */
-public abstract class ImageFormat {
+public abstract class ImageFormat_200958322_ZelayaDroguett {
 
     /**
      * Long of the image

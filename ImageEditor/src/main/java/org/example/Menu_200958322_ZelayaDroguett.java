@@ -9,26 +9,26 @@ import java.util.Scanner;
  *
  * @author Andres Zelaya Droguett
  */
-public class Menu {
+public class Menu_200958322_ZelayaDroguett {
 
     /**
      * Image that is selected for manipulation
      */
-    private Image selectedImage;
+    private Image_200958322_ZelayaDroguett200958322ZelayaDroguett selectedImage200958322ZelayaDroguett;
 
     /**
      * List of all available images for manipulation
      */
-    private final List<Image> availableImages;
+    private final List<Image_200958322_ZelayaDroguett200958322ZelayaDroguett> availableImage200958322ZelayaDroguetts;
 
     /**
      * List of available compressed images
      */
-    private final List<ImageCompressed> compressedImages;
+    private final List<ImageCompressed_200958322_ZelayaDroguett200958322ZelayaDroguett> compressedImages;
 
     //constructor
-    public Menu(List<Image> availableImages, List<ImageCompressed> compressedImages) {
-        this.availableImages = availableImages;
+    public Menu_200958322_ZelayaDroguett(List<Image_200958322_ZelayaDroguett200958322ZelayaDroguett> availableImage200958322ZelayaDroguetts, List<ImageCompressed_200958322_ZelayaDroguett200958322ZelayaDroguett> compressedImages) {
+        this.availableImage200958322ZelayaDroguetts = availableImage200958322ZelayaDroguetts;
         this.compressedImages = compressedImages;
     }
 
@@ -38,26 +38,26 @@ public class Menu {
      * @param index Position of the image in the list
      */
     public void selectImageFromList(int index) {
-        this.selectedImage = availableImages.get(index);
+        this.selectedImage200958322ZelayaDroguett = availableImage200958322ZelayaDroguetts.get(index);
     }
 
     /**
      * Method that adds a given image to the list of available images
-     * @param image Image that will be added to the list
+     * @param image200958322ZelayaDroguett Image that will be added to the list
      */
-    public void addImageToList(Image image) {
-        this.availableImages.add(image);
+    public void addImageToList(Image_200958322_ZelayaDroguett200958322ZelayaDroguett image200958322ZelayaDroguett) {
+        this.availableImage200958322ZelayaDroguetts.add(image200958322ZelayaDroguett);
     }
 
     /**
      * Method that updates an image on the list with the selected image
-     * @param selectedImage Image that will replace the old
-     * @param OldImage Old image
+     * @param selectedImage200958322ZelayaDroguett Image that will replace the old
+     * @param oldImage200958322ZelayaDroguett Old image
      */
-    public void modifyImageInList(Image selectedImage, Image OldImage) {
-        for(Image image : availableImages) {
-            if(image == OldImage) {
-                image = selectedImage;
+    public void modifyImageInList(Image_200958322_ZelayaDroguett200958322ZelayaDroguett selectedImage200958322ZelayaDroguett, Image_200958322_ZelayaDroguett200958322ZelayaDroguett oldImage200958322ZelayaDroguett) {
+        for(Image_200958322_ZelayaDroguett200958322ZelayaDroguett image200958322ZelayaDroguett : availableImage200958322ZelayaDroguetts) {
+            if(image200958322ZelayaDroguett == oldImage200958322ZelayaDroguett) {
+                image200958322ZelayaDroguett = selectedImage200958322ZelayaDroguett;
                 break;
             }
         }
@@ -70,8 +70,8 @@ public class Menu {
         int i = 0;
         System.out.println("Available images:");
         System.out.println("------------------------------------------------------------");
-        while(i < availableImages.size()) {
-            System.out.println((i+1) + ". " + availableImages.get(i).toString());
+        while(i < availableImage200958322ZelayaDroguetts.size()) {
+            System.out.println((i+1) + ". " + availableImage200958322ZelayaDroguetts.get(i).toString());
             System.out.println("------------------------------------------------------------");
             i++;
         }
@@ -97,7 +97,7 @@ public class Menu {
     public void printSelectedImage() {
         System.out.println("\nSelected image:");
         System.out.println("----------------------------------------");
-        System.out.println(selectedImage.imageToString());
+        System.out.println(selectedImage200958322ZelayaDroguett.imageToString());
         System.out.println("----------------------------------------");
     }
 
@@ -105,7 +105,7 @@ public class Menu {
      * Method that allows the user to create a custom image with custom colors in any format
      * @return New image
      */
-    public Image createImageFromScratch() {
+    public Image_200958322_ZelayaDroguett200958322ZelayaDroguett createImageFromScratch() {
         Scanner imageCreatorScanner = new Scanner(System.in);
         int largo;
         int alto;
@@ -138,7 +138,7 @@ public class Menu {
             }
             i++;
         }
-        return new Image(largo, alto, pixelList);
+        return new Image_200958322_ZelayaDroguett200958322ZelayaDroguett(largo, alto, pixelList);
     }
     
 
@@ -251,7 +251,7 @@ public class Menu {
                 int posY1;
                 int posX2;
                 int posY2;
-                Image newImage;
+                Image_200958322_ZelayaDroguett200958322ZelayaDroguett newImage200958322ZelayaDroguett;
                 System.out.println("You will crop an area of the selected image");
                 System.out.println("Please enter the coordinates of the first corner of the area you want to crop");
                 System.out.print("X: ");
@@ -263,9 +263,9 @@ public class Menu {
                 posX2 = editingScanner.nextInt();
                 System.out.print("Y: ");
                 posY2 = editingScanner.nextInt();
-                newImage = selectedImage;
-                newImage.crop(posX1, posY1, posX2, posY2);
-                modifyImageInList(newImage, selectedImage);
+                newImage200958322ZelayaDroguett = selectedImage200958322ZelayaDroguett;
+                newImage200958322ZelayaDroguett.crop(posX1, posY1, posX2, posY2);
+                modifyImageInList(newImage200958322ZelayaDroguett, selectedImage200958322ZelayaDroguett);
                 printSelectedImage();
                 break;
             case 3:
@@ -279,19 +279,19 @@ public class Menu {
                 changePixelMenu(option);
                 break;
             case 5:
-                Image oldImage =  selectedImage;
+                Image_200958322_ZelayaDroguett200958322ZelayaDroguett oldImage200958322ZelayaDroguett = selectedImage200958322ZelayaDroguett;
                 System.out.println("Select the image which will have it´s colors inverted");
                 System.out.println("(Only for BIT and RGB images)");
                 listAvailableImages();
                 System.out.print("Your selection: ");
                 option = editingScanner.nextInt();
                 selectImageFromList(option-1);
-                if(selectedImage.isBitMap()){
-                    selectedImage.invertColorBit();
-                } else if (selectedImage.isPixMap()) {
-                    selectedImage.invertColorRGB();
+                if(selectedImage200958322ZelayaDroguett.isBitMap()){
+                    selectedImage200958322ZelayaDroguett.invertColorBit();
+                } else if (selectedImage200958322ZelayaDroguett.isPixMap()) {
+                    selectedImage200958322ZelayaDroguett.invertColorRGB();
                 }
-                modifyImageInList(selectedImage, oldImage);
+                modifyImageInList(selectedImage200958322ZelayaDroguett, oldImage200958322ZelayaDroguett);
                 System.out.println("Colors inverted successfully");
                 printSelectedImage();
                 break;
@@ -311,16 +311,16 @@ public class Menu {
                 System.out.println("Back to the menu");
                 break;
             case 1:
-                Image oldImageH = selectedImage;
-                selectedImage.flipH();
-                modifyImageInList(selectedImage, oldImageH);
+                Image_200958322_ZelayaDroguett200958322ZelayaDroguett oldImageH200958322ZelayaDroguett = selectedImage200958322ZelayaDroguett;
+                selectedImage200958322ZelayaDroguett.flipH();
+                modifyImageInList(selectedImage200958322ZelayaDroguett, oldImageH200958322ZelayaDroguett);
                 System.out.println("Flipped successfully");
                 printSelectedImage();
                 break;
             case 2:
-                Image oldImageV = selectedImage;
-                selectedImage.flipV();
-                modifyImageInList(selectedImage, oldImageV);
+                Image_200958322_ZelayaDroguett200958322ZelayaDroguett oldImageV200958322ZelayaDroguett = selectedImage200958322ZelayaDroguett;
+                selectedImage200958322ZelayaDroguett.flipV();
+                modifyImageInList(selectedImage200958322ZelayaDroguett, oldImageV200958322ZelayaDroguett);
                 System.out.println("Flipped successfully");
                 printSelectedImage();
                 break;
@@ -340,26 +340,26 @@ public class Menu {
                 System.out.println("Back to the menu");
                 break;
             case 1:
-                Image oldImage90 = selectedImage;
-                selectedImage.rotate90();
-                modifyImageInList(selectedImage, oldImage90);
+                Image_200958322_ZelayaDroguett200958322ZelayaDroguett oldImage90200958322ZelayaDroguett = selectedImage200958322ZelayaDroguett;
+                selectedImage200958322ZelayaDroguett.rotate90();
+                modifyImageInList(selectedImage200958322ZelayaDroguett, oldImage90200958322ZelayaDroguett);
                 System.out.println("Rotated successfully");
                 printSelectedImage();
                 break;
             case 2:
-                Image oldImage270 = selectedImage;
-                selectedImage.rotate90();
-                selectedImage.rotate90();
-                selectedImage.rotate90();
-                modifyImageInList(selectedImage, oldImage270);
+                Image_200958322_ZelayaDroguett200958322ZelayaDroguett oldImage270200958322ZelayaDroguett = selectedImage200958322ZelayaDroguett;
+                selectedImage200958322ZelayaDroguett.rotate90();
+                selectedImage200958322ZelayaDroguett.rotate90();
+                selectedImage200958322ZelayaDroguett.rotate90();
+                modifyImageInList(selectedImage200958322ZelayaDroguett, oldImage270200958322ZelayaDroguett);
                 System.out.println("Rotated successfully");
                 printSelectedImage();
                 break;
             case 3:
-                Image oldImage180 = selectedImage;
-                selectedImage.rotate90();
-                selectedImage.rotate90();
-                modifyImageInList(selectedImage, oldImage180);
+                Image_200958322_ZelayaDroguett200958322ZelayaDroguett oldImage180200958322ZelayaDroguett = selectedImage200958322ZelayaDroguett;
+                selectedImage200958322ZelayaDroguett.rotate90();
+                selectedImage200958322ZelayaDroguett.rotate90();
+                modifyImageInList(selectedImage200958322ZelayaDroguett, oldImage180200958322ZelayaDroguett);
                 System.out.println("Rotated successfully");
                 printSelectedImage();
                 break;
@@ -388,23 +388,23 @@ public class Menu {
                 break;
             case 1:
                 String color;
-                Image oldImageColor = selectedImage;
+                Image_200958322_ZelayaDroguett200958322ZelayaDroguett oldImageColor200958322ZelayaDroguett = selectedImage200958322ZelayaDroguett;
                 System.out.println("Choose the new color/content of the pixel");
                 System.out.print("Color: ");
                 color = pixelScanner.next();
-                selectedImage.changePixelContent(posX, posY, color);
-                modifyImageInList(selectedImage, oldImageColor);
+                selectedImage200958322ZelayaDroguett.changePixelContent(posX, posY, color);
+                modifyImageInList(selectedImage200958322ZelayaDroguett, oldImageColor200958322ZelayaDroguett);
                 System.out.println("Color changed successfully");
                 printSelectedImage();
                 break;
             case 2:
                 int depth;
-                Image oldImageDepth = selectedImage;
+                Image_200958322_ZelayaDroguett200958322ZelayaDroguett oldImageDepth200958322ZelayaDroguett = selectedImage200958322ZelayaDroguett;
                 System.out.println("Choose the new depth of the pixel");
                 System.out.print("Depth: ");
                 depth = pixelScanner.nextInt();
-                selectedImage.changePixelDepth(posX, posY, depth);
-                modifyImageInList(selectedImage, oldImageDepth);
+                selectedImage200958322ZelayaDroguett.changePixelDepth(posX, posY, depth);
+                modifyImageInList(selectedImage200958322ZelayaDroguett, oldImageDepth200958322ZelayaDroguett);
                 System.out.println("Depth changed successfully");
                 printSelectedImage();
                 break;
@@ -438,23 +438,23 @@ public class Menu {
                 System.out.print("\nYour choice: ");
                 option = utilitiesMenu.nextInt();
                 selectImageFromList(option - 1);
-                if (selectedImage.isPixMap()) {
+                if (selectedImage200958322ZelayaDroguett.isPixMap()) {
                     System.out.println("The image is BIT type");
-                } else if (selectedImage.isPixMap()) {
+                } else if (selectedImage200958322ZelayaDroguett.isPixMap()) {
                     System.out.println("The image is RGB type");
-                } else if (selectedImage.isHexMap()) {
+                } else if (selectedImage200958322ZelayaDroguett.isHexMap()) {
                     System.out.println("The image is hexadecimal type");
                 }
                 break;
             case 3:
-                ImageCompressed imageCompressed;
+                ImageCompressed_200958322_ZelayaDroguett200958322ZelayaDroguett imageCompressed200958322ZelayaDroguett;
                 System.out.println("Select the image that you want to compress");
                 listAvailableImages();
                 System.out.print("\nYour choice: ");
                 option = utilitiesMenu.nextInt();
                 selectImageFromList(option - 1);
-                imageCompressed = selectedImage.compress();
-                compressedImages.add(imageCompressed);
+                imageCompressed200958322ZelayaDroguett = selectedImage200958322ZelayaDroguett.compress();
+                compressedImages.add(imageCompressed200958322ZelayaDroguett);
                 System.out.println("Image compressed successfully");
                 break;
             case 4:
@@ -465,8 +465,8 @@ public class Menu {
                 listAvailableCompressedImages();
                 System.out.print("\nYour choice: ");
                 option = utilitiesMenu.nextInt();
-                selectedImage = compressedImages.get(option - 1).decompress();
-                availableImages.add(selectedImage);
+                selectedImage200958322ZelayaDroguett = compressedImages.get(option - 1).decompress();
+                availableImage200958322ZelayaDroguetts.add(selectedImage200958322ZelayaDroguett);
                 System.out.println("Image decompressed successfully");
                 printSelectedImage();
                 break;
@@ -477,17 +477,17 @@ public class Menu {
                 option = utilitiesMenu.nextInt();
                 selectImageFromList(option - 1);
                 System.out.println("This is the histogram: ");
-                System.out.println(selectedImage.histogram());
+                System.out.println(selectedImage200958322ZelayaDroguett.histogram());
                 break;
             case 7:
-                List<Image> separatedImages;
+                List<Image_200958322_ZelayaDroguett200958322ZelayaDroguett> separatedImage200958322ZelayaDroguetts;
                 System.out.println("Select the image that you want to separate by depth");
                 listAvailableCompressedImages();
                 System.out.print("\nYour choice: ");
                 option = utilitiesMenu.nextInt();
                 selectImageFromList(option - 1);
-                separatedImages = selectedImage.separateByDepth();
-                availableImages.addAll(separatedImages);
+                separatedImage200958322ZelayaDroguetts = selectedImage200958322ZelayaDroguett.separateByDepth();
+                availableImage200958322ZelayaDroguetts.addAll(separatedImage200958322ZelayaDroguetts);
                 System.out.println("Image separated, check on available list");
                 break;
             default:

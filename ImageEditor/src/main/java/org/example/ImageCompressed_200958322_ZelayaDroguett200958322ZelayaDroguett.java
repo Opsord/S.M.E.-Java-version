@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author Andres Zelaya Droguett
  */
-public class ImageCompressed extends ImageFormat implements ImageCompressedOp{
+public class ImageCompressed_200958322_ZelayaDroguett200958322ZelayaDroguett extends ImageFormat_200958322_ZelayaDroguett implements ImageCompressedOp{
 
     /**
      * Element/color that was compressed
@@ -21,7 +21,7 @@ public class ImageCompressed extends ImageFormat implements ImageCompressedOp{
     private final int elementsCompressed;
     
     //constructor
-    public ImageCompressed(int largo, int alto, List<Pixel> pixelList, String compressedContent, int elementsCompressed) {
+    public ImageCompressed_200958322_ZelayaDroguett200958322ZelayaDroguett(int largo, int alto, List<Pixel> pixelList, String compressedContent, int elementsCompressed) {
         this.largo = largo;
         this.alto = alto;
         this.pixelList = pixelList;
@@ -59,7 +59,7 @@ public class ImageCompressed extends ImageFormat implements ImageCompressedOp{
      * @return Normal image
      */
     @Override
-    public Image decompress() {
+    public Image_200958322_ZelayaDroguett200958322ZelayaDroguett decompress() {
         int largo = getLargo();
         int alto = getAlto();
         int defaultDepth = 0;
@@ -72,7 +72,7 @@ public class ImageCompressed extends ImageFormat implements ImageCompressedOp{
         }
         List<Pixel> pixelList = getPixelList();
         pixelList.addAll(missingPixels);
-        return new Image(largo, alto, pixelList);
+        return new Image_200958322_ZelayaDroguett200958322ZelayaDroguett(largo, alto, pixelList);
     }
 
     /**
