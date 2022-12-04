@@ -30,11 +30,11 @@ public class Main {
         bitmap01.add(pixBIT08);
         bitmap01.add(pixBIT09);
         //definition of imageBIT01
-        Image_200958322_ZelayaDroguett200958322ZelayaDroguett image200958322ZelayaDroguettBIT01 = new Image_200958322_ZelayaDroguett200958322ZelayaDroguett(3,3,bitmap01);
+        Image_200958322_ZelayaDroguett image200958322ZelayaDroguettBIT01 = new Image_200958322_ZelayaDroguett(3,3,bitmap01);
 
         //create menu
-        List<Image_200958322_ZelayaDroguett200958322ZelayaDroguett> availableImage200958322ZelayaDroguetts = new ArrayList<>();
-        List<ImageCompressed_200958322_ZelayaDroguett200958322ZelayaDroguett> availableCompressedImages = new ArrayList<>();
+        List<Image_200958322_ZelayaDroguett> availableImage200958322ZelayaDroguetts = new ArrayList<>();
+        List<ImageCompressed_200958322_ZelayaDroguett> availableCompressedImages = new ArrayList<>();
         Menu_200958322_ZelayaDroguett menu200958322ZelayaDroguett = new Menu_200958322_ZelayaDroguett(availableImage200958322ZelayaDroguetts, availableCompressedImages);
         //add imageBIT01 to menu
         availableImage200958322ZelayaDroguetts.add(image200958322ZelayaDroguettBIT01);
@@ -70,7 +70,7 @@ public class Main {
                         menu200958322ZelayaDroguett.printSelectedImage();
                         break;   
                     case 3:
-                        Image_200958322_ZelayaDroguett200958322ZelayaDroguett newImage200958322ZelayaDroguett;
+                        Image_200958322_ZelayaDroguett newImage200958322ZelayaDroguett;
                         System.out.println("You will now create a new image from scratch");
                         newImage200958322ZelayaDroguett = menu200958322ZelayaDroguett.createImageFromScratch();
                         menu200958322ZelayaDroguett.addImageToList(newImage200958322ZelayaDroguett);

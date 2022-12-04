@@ -10,9 +10,9 @@ import java.util.stream.Collectors;
  *
  * @author Andres Zelaya Droguett
  */
-public class Image_200958322_ZelayaDroguett200958322ZelayaDroguett extends ImageFormat_200958322_ZelayaDroguett implements ImageOperations {
+public class Image_200958322_ZelayaDroguett extends ImageFormat_200958322_ZelayaDroguett implements ImageOperations {
     //constructor
-    public Image_200958322_ZelayaDroguett200958322ZelayaDroguett(int largo, int alto, List<Pixel> pixelList) {
+    public Image_200958322_ZelayaDroguett(int largo, int alto, List<Pixel> pixelList) {
         this.largo = largo;
         this.alto = alto;
         this.pixelList = pixelList;
@@ -162,7 +162,7 @@ public class Image_200958322_ZelayaDroguett200958322ZelayaDroguett extends Image
      * @return Compressed Image
      */
     @Override
-    public ImageCompressed_200958322_ZelayaDroguett200958322ZelayaDroguett compress(){
+    public ImageCompressed_200958322_ZelayaDroguett compress(){
         int largoImage = getLargo();
         int altoImage = getAlto();
         //histogram
@@ -175,7 +175,7 @@ public class Image_200958322_ZelayaDroguett200958322ZelayaDroguett extends Image
                 .collect(Collectors.toList());
         //get the number of elements that are repeated
         int elementsRepeated = Integer.parseInt(histogram.get(0).get(1));
-        return new ImageCompressed_200958322_ZelayaDroguett200958322ZelayaDroguett(largoImage, altoImage, newPixelList, mostRepeatedPixel, elementsRepeated);
+        return new ImageCompressed_200958322_ZelayaDroguett(largoImage, altoImage, newPixelList, mostRepeatedPixel, elementsRepeated);
     }
 
     /**
@@ -288,8 +288,8 @@ public class Image_200958322_ZelayaDroguett200958322ZelayaDroguett extends Image
      * @return List of images
      */
     @Override
-    public List<Image_200958322_ZelayaDroguett200958322ZelayaDroguett> separateByDepth(){
-        List<Image_200958322_ZelayaDroguett200958322ZelayaDroguett> image200958322ZelayaDroguettList = new ArrayList<>();
+    public List<Image_200958322_ZelayaDroguett> separateByDepth(){
+        List<Image_200958322_ZelayaDroguett> image200958322ZelayaDroguettList = new ArrayList<>();
         int largoImage = getLargo();
         int altoImage = getAlto();
         
@@ -309,11 +309,11 @@ public class Image_200958322_ZelayaDroguett200958322ZelayaDroguett extends Image
         }
         //create a new image for each depth
         for(List<Pixel> p:pixelListByDepth) {
-            Image_200958322_ZelayaDroguett200958322ZelayaDroguett image200958322ZelayaDroguett = new Image_200958322_ZelayaDroguett200958322ZelayaDroguett(largoImage, altoImage, p);
+            Image_200958322_ZelayaDroguett image200958322ZelayaDroguett = new Image_200958322_ZelayaDroguett(largoImage, altoImage, p);
             image200958322ZelayaDroguettList.add(image200958322ZelayaDroguett);
         }
         //fill the images with white pixels
-        image200958322ZelayaDroguettList.forEach(Image_200958322_ZelayaDroguett200958322ZelayaDroguett::fillImage);
+        image200958322ZelayaDroguettList.forEach(Image_200958322_ZelayaDroguett::fillImage);
         return image200958322ZelayaDroguettList;
     }
 

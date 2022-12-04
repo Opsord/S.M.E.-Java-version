@@ -1,0 +1,41 @@
+Autoevaluacion Lab 3
+Andres Zelaya
+
+Autoevaluación de requerimientos funcionales.
+
+TDAs							1
+Menú interactivo por terminal			1
+TDA image - constructor				1
+TDA image - isBitmap				1
+TDA image - isPixmap				1
+TDA image - isHexmap				1
+TDA image - isCompressed			1
+TDA image - flipH					1
+TDA image - flipV					1
+TDA image - crop					1
+TDA image - imgRGBToHex				1
+TDA image - histogram				1
+TDA image - rotate90				1
+TDA image - compress				1
+TDA image - changePixel				1
+TDA image - invertColorBit			1
+TDA image - invertColorRGB			1
+TDA image - image->string			1
+TDA image - depthLayers				1
+TDA image - decompress				1
+
+
+
+Autoevaluacion de requerimientos no funcionales.
+
+Autoevaluación  					1
+Lenguaje 						1
+Versión						1
+Interacciones					1
+Paradigma						1
+Prerequisitos					1
+Documentacion					1
+Organización					1
+Diagrama de analisis				1
+Diagrama de diseño				1
+Git							1

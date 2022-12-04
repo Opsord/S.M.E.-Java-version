@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author Andres Zelaya Droguett
  */
-public class ImageCompressed_200958322_ZelayaDroguett200958322ZelayaDroguett extends ImageFormat_200958322_ZelayaDroguett implements ImageCompressedOp{
+public class ImageCompressed_200958322_ZelayaDroguett extends ImageFormat_200958322_ZelayaDroguett implements ImageCompressedOp{
 
     /**
      * Element/color that was compressed
@@ -21,7 +21,7 @@ public class ImageCompressed_200958322_ZelayaDroguett200958322ZelayaDroguett ext
     private final int elementsCompressed;
     
     //constructor
-    public ImageCompressed_200958322_ZelayaDroguett200958322ZelayaDroguett(int largo, int alto, List<Pixel> pixelList, String compressedContent, int elementsCompressed) {
+    public ImageCompressed_200958322_ZelayaDroguett(int largo, int alto, List<Pixel> pixelList, String compressedContent, int elementsCompressed) {
         this.largo = largo;
         this.alto = alto;
         this.pixelList = pixelList;
@@ -59,7 +59,7 @@ public class ImageCompressed_200958322_ZelayaDroguett200958322ZelayaDroguett ext
      * @return Normal image
      */
     @Override
-    public Image_200958322_ZelayaDroguett200958322ZelayaDroguett decompress() {
+    public Image_200958322_ZelayaDroguett decompress() {
         int largo = getLargo();
         int alto = getAlto();
         int defaultDepth = 0;
@@ -72,7 +72,7 @@ public class ImageCompressed_200958322_ZelayaDroguett200958322ZelayaDroguett ext
         }
         List<Pixel> pixelList = getPixelList();
         pixelList.addAll(missingPixels);
-        return new Image_200958322_ZelayaDroguett200958322ZelayaDroguett(largo, alto, pixelList);
+        return new Image_200958322_ZelayaDroguett(largo, alto, pixelList);
     }
 
     /**
